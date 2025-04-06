@@ -78,9 +78,9 @@ const Hero = () => {
             className="flex gap-6 justify-center"
           >
             {[
-              { icon: Github, href: '#' },
-              { icon: Linkedin, href: '#' },
-              { icon: Twitter, href: '#' },
+              { icon: Github, href: 'https://github.com/Vikram-0401' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/' },
+              { icon: Twitter, href: 'https://x.com/VikramS87249739?mx=2' },
             ].map(({ icon: Icon, href }) => (
               <motion.a
                 key={href}

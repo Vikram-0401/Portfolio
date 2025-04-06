@@ -42,7 +42,7 @@ const SkillsSection = () => {
                 Development
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {['MongoDB', 'React', 'Express', 'TypeScript', 'Firebase', 'Tailwind CSS'].map((tech, index) => (
+                {['MongoDB', 'React', 'Express', 'TypeScript', 'Firebase'].map((tech, index) => (
                   <motion.div
                     key={tech}
                     initial={{ opacity: 0, x: -20 }}
