@@ -97,7 +97,9 @@ const Navbar = () => {
             </div>
 
             <motion.a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1gL3FjUjvzZMgdKBluiiJ9HPWkjxABSet/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden md:flex items-center px-4 py-2 rounded-full bg-blue-500 text-white font-medium text-sm hover:bg-blue-600 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -134,8 +136,10 @@ const Navbar = () => {
                 <span>{name}</span>
               </motion.a>
             ))}
-            <motion.a
-              href="/resume.pdf"
+             <motion.a
+              href="https://drive.usercontent.google.com/u/0/uc?id=1gL3FjUjvzZMgdKBluiiJ9HPWkjxABSet&export=download"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center px-3 py-2 rounded-md bg-blue-500 text-white font-medium"
               whileTap={{ scale: 0.95 }}
             >
