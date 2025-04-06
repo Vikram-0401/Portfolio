@@ -92,13 +92,13 @@ const About = () => {
               
               {/* Image container with enhanced styling */}
               <div className="relative rounded-xl overflow-hidden h-full border-2 border-blue-500/30 shadow-lg shadow-blue-500/20">
-                <img
-                  src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
-              </div>
+    <img
+      src="/images/My_pic.jpg"
+      alt="Vikram's Profile"
+      className="object-cover object-top w-full h-full" // Added object-top and w-full
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
+  </div>
             </div>
           </motion.div>
 
@@ -139,9 +139,9 @@ const About = () => {
                   {/* Introduction with enhanced typography */}
                   <div className="space-y-4">
                   <p className="text-lg leading-relaxed">
-  I'm Vikram, a Computer Science undergraduate at Siddaganga Institute of Technology, specializing in <span className="font-bold text-blue-400">AI and Machine Learning</span>. I'm passionate about <span className="font-bold text-blue-400">web development</span> and <span className="font-bold text-blue-400">DSA</span>, and I'm focused on building meaningful solutions using modern technologies.  
-  I enjoy learning by building projects that solve real-world problems.
-</p>
+                    I'm Vikram, a Computer Science undergraduate at Siddaganga Institute of Technology, specializing in <span className="font-bold text-blue-400">AI and Machine Learning</span>. I'm passionate about <span className="font-bold text-blue-400">web development</span> and <span className="font-bold text-blue-400">DSA</span>, and I'm focused on building meaningful solutions using modern technologies.  
+                    I enjoy learning by building projects that solve real-world problems.
+                  </p>
 
 
                   </div>

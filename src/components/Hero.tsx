@@ -24,7 +24,7 @@ const Hero = () => {
             </span>
             <TypeAnimation
               sequence={[
-                'Full Stack Developer',
+                'Developer',
                 1000,
                 'AI/ML Enthusiast',
                 1000,

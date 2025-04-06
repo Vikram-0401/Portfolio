@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Code2, Download, Home, Layers, Lightbulb, Mail, Menu, X, User } from 'lucide-react';
+import { Download, Home, Layers, Lightbulb, Mail, Menu, X, User } from 'lucide-react';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -57,7 +57,9 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Code2 className="w-8 h-8 text-blue-500" />
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
+                Vikram R
+              </span>
             </motion.div>
 
             {/* Desktop Menu */}

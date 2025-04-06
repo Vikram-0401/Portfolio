@@ -16,7 +16,7 @@ const projects = [
     image: '/images/Mock_interview_ss.png',
     tech: ['Next.js', 'TypeScript', 'Postgree', 'OpenAI', 'Shadcn UI'],
     github: 'https://github.com/Vikram-0401/Ai-Mock_Interviewer.git',
-    demo: 'your-live-demo-link',
+    demo: 'https://github.com/Vikram-0401/Ai-Mock_Interviewer.git',
   },
   {
     title: 'Code Review Assistant',
@@ -24,7 +24,7 @@ const projects = [
     image: '/images/Code_review_ss.png',
     tech: ['React', 'Express', 'OpenAI', 'TailwindCSS', 'Shadcn UI'],
     github: 'https://github.com/Vikram-0401/Code-RAI.git',
-    demo: 'your-live-demo-link',
+    demo: 'https://github.com/Vikram-0401/Code-RAI.git',
   },
 ];
 

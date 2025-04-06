@@ -62,41 +62,41 @@ const Contact = () => {
             className="space-y-10 relative z-10"
           >
             {/* Contact methods */}
-            <div className="space-y-6">
-              <motion.div 
-                variants={itemVariants}
-                className="flex items-center space-x-4 group"
-              >
-                <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/20 group-hover:border-blue-500/50 transition-all duration-300">
-                  <Mail className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
-                </div>
-                <div>
-                  <h3 className="text-gray-400 text-sm font-medium">Email</h3>
-                  <a
-                    href="mailto:vikramshettyr4@gmail.com"
-                    className="text-white text-lg hover:text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all duration-300"
-                  >
-                    vikramshettyr4@gmail.com
-                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all" />
-                  </a>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                variants={itemVariants}
-                className="flex items-center space-x-4 group"
-              >
-                <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center border border-purple-500/20 group-hover:border-purple-500/50 transition-all duration-300">
-                  <MessageSquare className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
-                </div>
-                <div>
-                  <h3 className="text-gray-400 text-sm font-medium">Let's chat</h3>
-                  <p className="text-white text-lg">
-                    I'm available for freelance projects and full-time positions.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+          <div className="space-y-6">
+            <motion.div 
+              variants={itemVariants}
+              className="flex items-start space-x-4 group" // Changed to items-start
+            >
+              <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/20 group-hover:border-blue-500/50 transition-all duration-300 flex-shrink-0"> {/* Added flex-shrink-0 */}
+                <Mail className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
+              </div>
+              <div className="min-w-0"> {/* Added min-w-0 for text truncation */}
+                <h3 className="text-gray-400 text-sm font-medium mb-1">Email</h3>
+                <a
+                  href="mailto:vikramshettyr4@gmail.com"
+                  className="text-white text-lg hover:text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all duration-300"
+                >
+                  vikramshettyr4@gmail.com
+                  <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
+                </a>
+              </div>
+            </motion.div>
+  
+            <motion.div 
+              variants={itemVariants}
+              className="flex items-start space-x-4 group" // Changed to items-start
+            >
+              <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center border border-purple-500/20 group-hover:border-purple-500/50 transition-all duration-300 flex-shrink-0"> {/* Added flex-shrink-0 */}
+                <MessageSquare className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
+              </div>
+              <div className="min-w-0"> {/* Added min-w-0 for text truncation */}
+                <h3 className="text-gray-400 text-sm font-medium mb-1">Let's chat</h3>
+                <p className="text-white text-lg">
+                  I'm available for freelance projects and full-time positions.
+                </p>
+              </div>
+            </motion.div>
+          </div>
             
             {/* Social connections */}
             <motion.div variants={itemVariants}>
