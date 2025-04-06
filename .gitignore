@@ -11,10 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
-.bolt
 
-# Specific assets to ignore
-public/images/V_icon.png
+
 
 # Editor directories and files
 .vscode/*
