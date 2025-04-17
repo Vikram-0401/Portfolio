@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Download, Home, Layers, Lightbulb, Mail, Menu, X, User } from 'lucide-react';
+import Icon from './ui/Icon';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -13,11 +13,11 @@ const Navbar = () => {
   );
 
   const navItems = [
-    { name: 'Home', icon: Home },
-    { name: 'About', icon: User },
-    { name: 'Skills', icon: Lightbulb },
-    { name: 'Projects', icon: Layers },
-    { name: 'Contact', icon: Mail },
+    { name: 'Home', icon: 'Home' },
+    { name: 'About', icon: 'User' },
+    { name: 'Skills', icon: 'Lightbulb' },
+    { name: 'Projects', icon: 'Layers' },
+    { name: 'Contact', icon: 'Mail' },
   ];
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Navbar = () => {
             {/* Desktop Menu */}
             <div className="hidden md:block">
               <div className="flex items-center space-x-8">
-                {navItems.map(({ name, icon: Icon }) => (
+                {navItems.map(({ name, icon }) => (
                   <motion.a
                     key={name}
                     href={`#${name.toLowerCase()}`}
@@ -74,7 +74,7 @@ const Navbar = () => {
                     }`}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon name={icon as any} className="w-4 h-4" />
                     <span>{name}</span>
                     {activeSection === name.toLowerCase() && (
                       <motion.div
@@ -94,7 +94,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-300"
               >
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isMenuOpen ? <Icon name="X" className="w-6 h-6" /> : <Icon name="Menu" className="w-6 h-6" />}
               </motion.button>
             </div>
 
@@ -106,7 +106,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Icon name="Download" className="w-4 h-4 mr-2" />
               Resume
             </motion.a>
           </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
           className="mobile-menu md:hidden"
         >
           <div className="px-4 pt-2 pb-4 space-y-2">
-            {navItems.map(({ name, icon: Icon }) => (
+            {navItems.map(({ name, icon }) => (
               <motion.a
                 key={name}
                 href={`#${name.toLowerCase()}`}
@@ -134,7 +134,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Icon className="w-5 h-5" />
+                <Icon name={icon as any} className="w-5 h-5" />
                 <span>{name}</span>
               </motion.a>
             ))}
@@ -145,7 +145,7 @@ const Navbar = () => {
               className="flex items-center px-3 py-2 rounded-md bg-blue-500 text-white font-medium"
               whileTap={{ scale: 0.95 }}
             >
-              <Download className="w-5 h-5 mr-2" />
+              <Icon name="Download" className="w-5 h-5 mr-2" />
               Resume
             </motion.a>
           </div>

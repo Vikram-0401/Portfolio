@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import Icon from './ui/Icon';
 
 const projects = [
   {
@@ -92,7 +92,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 className="p-2 rounded-lg bg-gray-700/50 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
                 aria-label={`View ${project.title} on GitHub`}
               >
-                <Github className="w-5 h-5" />
+                <Icon name="Github" className="w-5 h-5" />
               </motion.a>
               <motion.a
                 href={project.demo}
@@ -101,7 +101,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 className="p-2 rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors"
                 aria-label={`View live demo of ${project.title}`}
               >
-                <ExternalLink className="w-5 h-5" />
+                <Icon name="ExternalLink" className="w-5 h-5" />
               </motion.a>
             </div>
           </div>
@@ -152,7 +152,7 @@ const Projects = () => {
             animate={{ x: [0, 5, 0] }}
             transition={{ duration: 1, repeat: Infinity }}
           >
-            <ArrowRight className="w-5 h-5" />
+            <Icon name="ArrowRight" className="w-5 h-5" />
           </motion.span>
         </motion.a>
       </motion.div>

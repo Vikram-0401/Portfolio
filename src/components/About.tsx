@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { Compass, PenTool, Gamepad2 } from 'lucide-react';
-
+import Icon from './ui/Icon';
 
 const About = () => {
   // Animation variants for staggered animations
@@ -27,22 +26,22 @@ const About = () => {
   // Hobby data for consistency
   const hobbies = [
     {
-      icon: <Gamepad2 className="w-6 h-6 text-blue-400" />,
+      icon: <Icon name="Gamepad2" className="w-6 h-6 text-blue-400" />,
       title: "Cricket",
       description: "Cricket enthusiast who finds joy in both playing and watching the game"
     },
     {
-      icon: <Compass className="w-6 h-6 text-blue-400" />,
+      icon: <Icon name="Compass" className="w-6 h-6 text-blue-400" />,
       title: "Hiking",
       description: "Avid hiker who loves exploring new trails and connecting with nature"
     },
     {
-      icon: <PenTool className="w-6 h-6 text-blue-400" />,
+      icon: <Icon name="PenTool" className="w-6 h-6 text-blue-400" />,
       title: "Drawing",
       description: "Creative soul who expresses through drawing and artistic pursuits"
     },
     {
-      icon: <Gamepad2 className="w-6 h-6 text-blue-400" />,
+      icon: <Icon name="Gamepad2" className="w-6 h-6 text-blue-400" />,
       title: "Badminton",
       description: "Badminton player who enjoys competitive matches and staying active"
     }

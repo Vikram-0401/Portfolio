@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { ChevronDown, Github, Linkedin, Twitter } from 'lucide-react';
+import Icon from './ui/Icon';
 
 const Hero = () => {
   return (
@@ -78,10 +78,10 @@ const Hero = () => {
             className="flex gap-6 justify-center"
           >
             {[
-              { icon: Github, href: 'https://github.com/Vikram-0401' },
-              { icon: Linkedin, href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/' },
-              { icon: Twitter, href: 'https://x.com/VikramS87249739?mx=2' },
-            ].map(({ icon: Icon, href }) => (
+              { icon: 'Github', href: 'https://github.com/Vikram-0401' },
+              { icon: 'Linkedin', href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/' },
+              { icon: 'Twitter', href: 'https://x.com/VikramS87249739?mx=2' },
+            ].map(({ icon, href }) => (
               <motion.a
                 key={href}
                 href={href}
@@ -89,7 +89,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.2, y: -5 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Icon className="w-6 h-6" />
+                <Icon name={icon as any} className="w-6 h-6" />
               </motion.a>
             ))}
           </motion.div>
@@ -107,7 +107,7 @@ const Hero = () => {
           ease: "easeInOut"
         }}
       >
-        <ChevronDown className="w-8 h-8 text-blue-500" />
+        <Icon name="ChevronDown" className="w-8 h-8 text-blue-500" />
       </motion.div>
     </section>
   );

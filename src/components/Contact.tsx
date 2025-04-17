@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MessageSquare, Github, Linkedin, Twitter, ArrowRight } from 'lucide-react';
+import Icon from './ui/Icon';
 
 const Contact = () => {
   // Animation variants for staggered animations
@@ -68,7 +68,7 @@ const Contact = () => {
               className="flex items-start space-x-4 group" // Changed to items-start
             >
               <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/20 group-hover:border-blue-500/50 transition-all duration-300 flex-shrink-0"> {/* Added flex-shrink-0 */}
-                <Mail className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
+                <Icon name="Mail" className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
               </div>
               <div className="min-w-0"> {/* Added min-w-0 for text truncation */}
                 <h3 className="text-gray-400 text-sm font-medium mb-1">Email</h3>
@@ -77,7 +77,7 @@ const Contact = () => {
                   className="text-white text-lg hover:text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all duration-300"
                 >
                   vikramshettyr4@gmail.com
-                  <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
+                  <Icon name="ArrowRight" className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
                 </a>
               </div>
             </motion.div>
@@ -87,7 +87,7 @@ const Contact = () => {
               className="flex items-start space-x-4 group" // Changed to items-start
             >
               <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center border border-purple-500/20 group-hover:border-purple-500/50 transition-all duration-300 flex-shrink-0"> {/* Added flex-shrink-0 */}
-                <MessageSquare className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
+                <Icon name="MessageSquare" className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
               </div>
               <div className="min-w-0"> {/* Added min-w-0 for text truncation */}
                 <h3 className="text-gray-400 text-sm font-medium mb-1">Let's chat</h3>
@@ -103,11 +103,11 @@ const Contact = () => {
               <h3 className="text-gray-400 mb-4 text-center font-medium">Connect with me</h3>
               <div className="flex items-center justify-center space-x-5">
                 {[
-                  { Icon: Github, href: 'https://github.com/Vikram-0401', ariaLabel: 'GitHub Profile', hoverColor: 'hover:bg-gray-700' },
-                  { Icon: Linkedin, href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/', ariaLabel: 'LinkedIn Profile', hoverColor: 'hover:bg-blue-600/20' },
-                  { Icon: Twitter, href: 'https://x.com/VikramS87249739?mx=2', ariaLabel: 'Twitter Profile', hoverColor: 'hover:bg-sky-600/20' },
-                  { Icon: Mail, href: 'mailto:vikramshettyr4@gmail.com', ariaLabel: 'Email Contact', hoverColor: 'hover:bg-green-600/20' }
-                ].map(({ Icon, href, ariaLabel, hoverColor }, index) => (
+                  { icon: 'Github', href: 'https://github.com/Vikram-0401', ariaLabel: 'GitHub Profile', hoverColor: 'hover:bg-gray-700' },
+                  { icon: 'Linkedin', href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/', ariaLabel: 'LinkedIn Profile', hoverColor: 'hover:bg-blue-600/20' },
+                  { icon: 'Twitter', href: 'https://x.com/VikramS87249739?mx=2', ariaLabel: 'Twitter Profile', hoverColor: 'hover:bg-sky-600/20' },
+                  { icon: 'Mail', href: 'mailto:vikramshettyr4@gmail.com', ariaLabel: 'Email Contact', hoverColor: 'hover:bg-green-600/20' }
+                ].map(({ icon, href, ariaLabel, hoverColor }, index) => (
                   <motion.a
                     key={href}
                     href={href}
@@ -119,7 +119,7 @@ const Contact = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + index * 0.1 }}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon name={icon} className="w-4 h-4" />
                   </motion.a>
                 ))}
               </div>
