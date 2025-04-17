@@ -24,7 +24,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative">
+    <section id="contact" className="min-h-screen h-screen py-12 flex items-center">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/20 pointer-events-none" />
       
@@ -32,11 +32,13 @@ const Contact = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-8"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Get In Touch
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Have a project in mind or want to discuss potential collaborations? 
             I'm always open to new opportunities and challenges.

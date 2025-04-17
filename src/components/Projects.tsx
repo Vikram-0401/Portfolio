@@ -113,13 +113,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="min-h-screen h-screen py-12 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-center text-white mb-12"
+          className="text-3xl font-bold text-center text-white mb-8"
         >
           Featured Projects
         </motion.h2>
@@ -130,33 +130,30 @@ const Projects = () => {
           ))}
         </div>
 
-  
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mt-12 text-center"
-      >
-        <motion.a
-          href="https://github.com/Vikram-0401?tab=repositories"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mt-12 text-center"
         >
-          View All Projects
-          <motion.span
-            className="ml-2"
-            animate={{ x: [0, 5, 0] }}
-            transition={{ duration: 1, repeat: Infinity }}
+          <motion.a
+            href="https://github.com/Vikram-0401?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <Icon name="ArrowRight" className="w-5 h-5" />
-          </motion.span>
-        </motion.a>
-      </motion.div>
-
+            View All Projects
+            <motion.span
+              className="ml-2"
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              <Icon name="ArrowRight" className="w-5 h-5" />
+            </motion.span>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

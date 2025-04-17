@@ -48,14 +48,14 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="min-h-screen h-screen py-12 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from from-white to to-white bg-clip-text text-transparent">
            About Me
