@@ -7,25 +7,25 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#121212] text-white overflow-x-hidden scroll-smooth">
+    <div className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
       <Navbar />
-      <div className="snap-y snap-mandatory">
-        <div className="snap-center">
+      <main>
+        <section>
           <Hero />
-        </div>
-        <div className="snap-center">
+        </section>
+        <section>
           <About />
-        </div>
-        <div className="snap-center">
+        </section>
+        <section>
           <Skills />
-        </div>
-        <div className="snap-center">
+        </section>
+        <section>
           <Projects />
-        </div>
-        <div className="snap-center">
+        </section>
+        <section>
           <Contact />
-        </div>
-      </div>
+        </section>
+      </main>
       <footer className="py-6 text-center text-gray-400 border-t border-gray-800">
         <p>© 2025 Vikram R. All rights reserved.</p>
       </footer>

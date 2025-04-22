@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import Icon from './ui/Icon';
-import { FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaJs } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiNextdotjs, SiPostman } from 'react-icons/si';
+import { FaReact, FaPython, FaDocker, FaGitAlt, FaJs, FaFireAlt } from 'react-icons/fa';
+import { SiTypescript, SiMongodb, SiNextdotjs, SiPostman, SiLeetcode } from 'react-icons/si';
 import { BsFillLightningFill } from 'react-icons/bs';
 
 // Skills data with proper styling
@@ -10,7 +10,7 @@ const skills = [
   { name: "React", color: "#61DAFB", position: [65, 30], icon: FaReact, glowColor: "#61DAFB30" },
   { name: "TypeScript", color: "#3178C6", position: [30, 20], icon: SiTypescript, glowColor: "#3178C630" },
   { name: "JavaScript", color: "#F7DF1E", position: [45, 15], icon: FaJs, glowColor: "#F7DF1E30" },
-  { name: "Node.js", color: "#339933", position: [80, 50], icon: FaNodeJs, glowColor: "#33993330" },
+  { name: "Firebase", color: "#FFCA28", position: [80, 50], icon: FaFireAlt, glowColor: "#FFCA2830" },
   { name: "Python", color: "#3776AB", position: [25, 45], icon: FaPython, glowColor: "#3776AB30" },
   { name: "MongoDB", color: "#47A248", position: [45, 70], icon: SiMongodb, glowColor: "#47A24830" },
   { name: "Next.js", color: "#000000", position: [65, 85], icon: SiNextdotjs, glowColor: "#FFFFFF30" },
@@ -22,12 +22,12 @@ const skills = [
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen py-16 md:py-24 flex items-center justify-center relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated circles */}
         <motion.div
-          className="absolute top-1/4 left-16 w-64 h-64 rounded-full bg-blue-500/5 blur-3xl"
+          className="absolute top-1/4 left-10 md:left-16 w-40 md:w-64 h-40 md:h-64 rounded-full bg-blue-500/5 blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.2, 0.3]
@@ -39,7 +39,7 @@ const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-16 w-80 h-80 rounded-full bg-purple-500/5 blur-3xl"
+          className="absolute bottom-1/4 right-10 md:right-16 w-48 md:w-80 h-48 md:h-80 rounded-full bg-purple-500/5 blur-3xl"
           animate={{ 
             scale: [1, 1.1, 1],
             opacity: [0.2, 0.3, 0.2]
@@ -59,10 +59,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left space-y-8 lg:w-1/2"
+            className="text-center lg:text-left space-y-6 md:space-y-8 lg:w-1/2"
           >
             <motion.h1 
-              className="text-4xl sm:text-6xl font-bold text-white space-y-3"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white space-y-2 md:space-y-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -83,7 +83,7 @@ const Hero = () => {
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="block text-3xl sm:text-4xl text-blue-400"
+                className="block text-2xl sm:text-3xl md:text-4xl text-blue-400"
               />
             </motion.h1>
 
@@ -91,7 +91,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-xl text-gray-400 max-w-2xl lg:mx-0 mx-auto"
+              className="text-base md:text-xl text-gray-400 max-w-2xl lg:mx-0 mx-auto"
             >
               Passionate about creating innovative solutions and exploring the frontiers of AI & Machine Learning.
             </motion.p>
@@ -104,7 +104,7 @@ const Hero = () => {
             >
               <motion.a
                 href="#contact"
-                className="px-8 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors"
+                className="px-6 sm:px-8 py-2.5 sm:py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -112,7 +112,7 @@ const Hero = () => {
               </motion.a>
               <motion.a
                 href="#projects"
-                className="px-8 py-3 border border-blue-500/30 text-blue-400 rounded-full font-medium hover:bg-blue-500/10 transition-colors"
+                className="px-6 sm:px-8 py-2.5 sm:py-3 border border-blue-500/30 text-blue-400 rounded-full font-medium hover:bg-blue-500/10 transition-colors text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -130,21 +130,28 @@ const Hero = () => {
                 { icon: 'Github', href: 'https://github.com/Vikram-0401' },
                 { icon: 'Linkedin', href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/' },
                 { icon: 'Twitter', href: 'https://x.com/VikramS87249739?mx=2' },
-              ].map(({ icon, href }) => (
+                { 
+                  icon: 'custom', 
+                  customIcon: <SiLeetcode className="w-5 h-5 sm:w-6 sm:h-6" />, 
+                  href: 'https://leetcode.com/u/Vikram0401/' 
+                },
+              ].map(({ icon, href, customIcon }) => (
                 <motion.a
                   key={href}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Icon name={icon as any} className="w-6 h-6" />
+                  {icon === 'custom' ? customIcon : <Icon name={icon as any} className="w-5 h-5 sm:w-6 sm:h-6" />}
                 </motion.a>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Skills Visualization - Enhanced for Better Visibility */}
+          {/* Skills Visualization - Enhanced for Better Visibility and Responsiveness */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}

@@ -36,7 +36,7 @@ const SkillsSection = () => {
                   className="w-5 h-5"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm0 3a5 5 0 11-5 5 1 1 0 012 0 3 3 0 106 0 1 1 0 012 0 5 5 0 01-5 5z"/>
+                    <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16zm0 3a5 5 0 11-5 5 1 1 0 012 0 3 3 0 106 0 1 1 0 012 0 5 5 0 01-5 5z"/>
                   </svg>
                 </motion.div>
                 Development
@@ -136,7 +136,7 @@ const SkillsSection = () => {
                   className="w-5 h-5"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2a10 10 0 110 20 10 10 0 010-20zm0 2a8 8 0 100 16 8 8 0 000-16zm-4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
+                    <path d="M12 2a10 10 0 110 20 10 10 0 010-20zm0 2a8 8 0 100 16zm-4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
                   </svg>
                 </motion.div>
                 Tools & Platforms

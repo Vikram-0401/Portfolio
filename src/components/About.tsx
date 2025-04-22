@@ -139,14 +139,12 @@ const About = () => {
                   <div className="space-y-4">
                   <p className="text-lg leading-relaxed">
                     I'm Vikram, a Computer Science undergraduate at Siddaganga Institute of Technology, specializing in <span className="font-bold text-blue-400">AI and Machine Learning</span>. I'm passionate about <span className="font-bold text-blue-400">web development</span> and <span className="font-bold text-blue-400">DSA</span>, and I'm focused on building meaningful solutions using modern technologies.  
-                    I enjoy learning by building projects that solve real-world problems.
+                    I enjoy learning by building projects that solve real-world problems. My journey in tech started with competitive programming and has evolved into full-stack development with a strong foundation in data structures and algorithms.
                   </p>
-
-
                   </div>
 
                   {/* Enhanced Beyond Tech Section */}
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     <h3 className="text-xl font-semibold relative inline-block">
                       <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Beyond Tech</span>
                       <motion.span 
@@ -157,9 +155,9 @@ const About = () => {
                       />
                     </h3>
                     
-                    {/* Uniform hobby cards with better animations */}
+                    {/* Compact hobby cards with better animations */}
                     <motion.div 
-                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+                      className="grid grid-cols-2 md:grid-cols-4 gap-3"
                       variants={containerVariants}
                       initial="hidden"
                       whileInView="visible"
@@ -170,17 +168,17 @@ const About = () => {
                           key={index}
                           variants={itemVariants}
                           whileHover={{ 
-                            y: -5, 
-                            boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)",
+                            y: -3, 
+                            boxShadow: "0 8px 20px -5px rgba(59, 130, 246, 0.5)",
                             borderColor: "rgba(59, 130, 246, 0.5)"
                           }}
-                          className="flex flex-col items-center p-5 rounded-lg bg-gray-800/80 border border-gray-700/80 hover:border-blue-500/50 transition-all duration-300"
+                          className="flex flex-col items-center p-3 rounded-lg bg-gray-800/80 border border-gray-700/80 hover:border-blue-500/50 transition-all duration-300"
                         >
-                          <div className="bg-blue-500/10 p-3 rounded-full mb-3">
+                          <div className="bg-blue-500/10 p-2 rounded-full mb-2">
                             {hobby.icon}
                           </div>
-                          <h4 className="font-medium text-blue-400 mb-2">{hobby.title}</h4>
-                          <p className="text-sm text-center text-gray-300">{hobby.description}</p>
+                          <h4 className="font-medium text-blue-400 mb-1 text-sm">{hobby.title}</h4>
+                          <p className="text-xs text-center text-gray-300 line-clamp-2">{hobby.description}</p>
                         </motion.div>
                       ))}
                     </motion.div>
