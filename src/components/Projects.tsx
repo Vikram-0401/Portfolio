@@ -4,7 +4,7 @@ import Icon from './ui/Icon';
 const projects = [
   {
     title: 'Modernizing Laboratory Assessment',
-    description: 'A comprehensive digital platform transforming traditional laboratory assessments with real-time feedback and analytics. Features intuitive interface with code execution capabilities for enhanced learning experience.',
+    description: 'Digital platform for lab assessments with real-time feedback. Features code execution and analytics for enhanced learning.',
     image: '/images/Modernizing_lab_SS.png',
     tech: ['React', 'Express', 'MongoDB', 'Piston Api', 'Monaco Editor', 'Node.js'],
     github: 'https://github.com/Vikram-0401/Modernizing-Laboratory-Assessment.git',
@@ -12,7 +12,7 @@ const projects = [
   },
   {
     title: 'HiveMind',
-    description: 'A Medium-like blogging platform built with modern technologies. Features a clean interface for reading and writing articles, with serverless architecture.',
+    description: 'Modern blogging platform with clean interface. Serverless architecture for optimal performance.',
     image: '/images/HiveMind.png',
     tech: ['React', 'TypeScript', 'Hono', 'Cloudflare Workers', 'Prisma', 'PostgreSQL'],
     github: 'https://github.com/Vikram-0401',
@@ -20,7 +20,7 @@ const projects = [
   },
   {
     title: 'PayEase',
-    description: 'A lightweight money transfer application that allows users to securely transfer funds between accounts. Simple and intuitive interface for easy financial transactions.',
+    description: 'Secure money transfer app with simple interface for quick and easy transactions.',
     image: '/images/EasePay.png',
     tech: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB'],
     github: 'https://github.com/Vikram-0401',
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     title: 'AI Mock Interviewer',
-    description: 'An AI-powered platform transforming interview preparation with real-time feedback and analytics. Features adaptive questioning system with performance tracking for enhanced interview readiness.',
+    description: 'AI-powered interview prep platform with real-time feedback and adaptive questioning system.',
     image: '/images/Mock_interview_ss.png',
     tech: ['Next.js', 'TypeScript', 'Postgree', 'OpenAI', 'Shadcn UI'],
     github: 'https://github.com/Vikram-0401/Ai-Mock_Interviewer.git',
@@ -57,12 +57,12 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       className="group h-full flex flex-col"
     >
       {/* Card content */}
-      <div className="relative flex flex-col bg-gray-800 rounded-lg overflow-hidden h-full border border-transparent transition-all duration-300 group-hover:border-blue-500 group-hover:shadow-lg group-hover:shadow-blue-500/20">
-        <div className="relative aspect-[16/9] overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          <div className="relative flex flex-col bg-gray-800 rounded-lg overflow-hidden h-[350px] border border-transparent transition-all duration-300 group-hover:border-blue-500 group-hover:shadow-lg group-hover:shadow-blue-500/20">
+             <div className="relative aspect-[16/9] overflow-hidden max-h-[180px]">
+              <img
+               src={project.image}
+               alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
         </div>
@@ -81,21 +81,16 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </div>
           
           <div className="mt-auto space-y-3">
-            <div className="flex flex-wrap gap-1.5">
-              {project.tech.slice(0, 4).map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full text-xs border border-blue-500/20"
-                >
-                  {tech}
-                </span>
-              ))}
-              {project.tech.length > 4 && (
-                <span className="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full text-xs border border-blue-500/20">
-                  +{project.tech.length - 4}
-                </span>
-              )}
-            </div>
+          <div className="flex flex-wrap gap-1">
+    {project.tech.map((tech) => (
+      <span
+        key={tech}
+        className="px-1.5 py-0.5 bg-blue-500/10 text-blue-400 rounded-full text-[10px] border border-blue-500/20"
+      >
+        {tech}
+      </span>
+    ))}
+  </div>
             
             <div className="flex space-x-3">
               <motion.a
@@ -141,7 +136,7 @@ const Projects = () => {
           Featured Projects
         </motion.h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
           <ProjectCard project={projects[0]} index={0} />
           <ProjectCard project={projects[1]} index={1} />
           <ProjectCard project={projects[2]} index={2} />
