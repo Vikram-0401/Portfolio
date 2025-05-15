@@ -36,7 +36,7 @@ const projects = [
   }
 ];
 
-interface ProjectCardProps {
+interface ProjectCardProps {  
   project: {
     title: string;
     description: string;

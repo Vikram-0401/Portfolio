@@ -107,7 +107,7 @@ const Contact = () => {
                   className="flex items-start space-x-5 group"
                 >
                   <div className="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center border border-green-500/20 group-hover:border-green-500/50 transition-all duration-300 flex-shrink-0">
-                    <Icon name="MapPin" className="w-6 h-6 text-green-400 group-hover:text-green-300" />
+                    ?<Icon name="MapPin" className="w-6 h-6 text-green-400 group-hover:text-green-300" />
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-gray-400 text-sm font-medium mb-1">Location</h3>

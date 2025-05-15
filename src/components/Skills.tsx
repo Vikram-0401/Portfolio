@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const SkillsSection = () => {
 
   return (
-    <section id="skills" className="min-h-screen h-screen py-12 flex items-center relative">
+    <section id="skills" className="min-h-screen py-12 md:py-24 flex items-center relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,7 +17,7 @@ const SkillsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 md:space-y-8">
           {/* Development Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -41,7 +41,7 @@ const SkillsSection = () => {
                 </motion.div>
                 Development
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                 {['MongoDB', 'React', 'Express', 'TypeScript', 'Firebase'].map((tech, index) => (
                   <motion.div
                     key={tech}
@@ -91,7 +91,7 @@ const SkillsSection = () => {
                 Languages
               </h3>
          
-             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
               {['C++', 'C', 'JavaScript', 'HTML/CSS'].map((lang, index) => (
                 <motion.div
                   key={lang}
@@ -141,7 +141,7 @@ const SkillsSection = () => {
                 </motion.div>
                 Tools & Platforms
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                 {['Git', 'GitHub', 'VSCode', 'docker','Postman'].map((tool, index) => (
                   <motion.div
                     key={tool}

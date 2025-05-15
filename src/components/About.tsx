@@ -48,7 +48,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen h-screen py-12 flex items-center">
+    <section id="about" className="min-h-screen py-12 md:py-24 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,13 +62,13 @@ const About = () => {
           </h2>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Profile Image Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="lg:w-1/3"
+            className="lg:w-1/3 w-full mb-8 lg:mb-0"
           >
             <div className="relative w-64 h-64 mx-auto perspective-effect">
               {/* Enhanced decorative elements */}
@@ -137,7 +137,7 @@ const About = () => {
                 >
                   {/* Introduction with enhanced typography */}
                   <div className="space-y-4">
-                  <p className="text-lg leading-relaxed">
+                  <p className="text-base md:text-lg leading-relaxed">
                     I'm Vikram, a Computer Science undergraduate at Siddaganga Institute of Technology, specializing in <span className="font-bold text-blue-400">AI and Machine Learning</span>. I'm passionate about <span className="font-bold text-blue-400">web development</span> and <span className="font-bold text-blue-400">DSA</span>, and I'm focused on building meaningful solutions using modern technologies.  
                     I enjoy learning by building projects that solve real-world problems. My journey in tech started with competitive programming and has evolved into full-stack development with a strong foundation in data structures and algorithms.
                   </p>
@@ -157,7 +157,7 @@ const About = () => {
                     
                     {/* Compact hobby cards with better animations */}
                     <motion.div 
-                      className="grid grid-cols-2 md:grid-cols-4 gap-3"
+                      className="grid grid-cols-2 gap-3"
                       variants={containerVariants}
                       initial="hidden"
                       whileInView="visible"
