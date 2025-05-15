@@ -125,13 +125,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 mt-[-80px] pt-[80px]">
+    <section id="projects" className="py-24 md:py-28 mt-[-100px] pt-[100px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-center text-white mb-10"
+          className="text-3xl font-bold text-center text-white mb-12 pt-6"
         >
           Featured Projects
         </motion.h2>

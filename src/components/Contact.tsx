@@ -25,7 +25,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen py-16 md:py-24 flex items-center">
+    <section id="contact" className="min-h-screen py-16 md:py-24 flex items-center mt-[-80px] pt-[80px]">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/20 pointer-events-none" />
       

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const SkillsSection = () => {
 
   return (
-    <section id="skills" className="min-h-screen py-12 md:py-24 flex items-center relative">
+    <section id="skills" className="min-h-screen py-12 md:py-24 flex items-center relative mt-[-80px] pt-[80px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
