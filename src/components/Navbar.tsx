@@ -89,7 +89,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
             >
               <a href="#home" className="text-xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent flex items-center">
-                <span className="text-2xl font-bold">V</span>ikram <span className="hidden sm:inline font-semibold">R</span>
+                Vikram <span className="hidden sm:inline font-semibold">&nbsp;R</span>
               </a>
             </motion.div>
 
@@ -131,7 +131,7 @@ const Navbar = () => {
             </div>
 
             <motion.a
-              href="https://drive.google.com/file/d/1gL3FjUjvzZMgdKBluiiJ9HPWkjxABSet/view?usp=sharing"
+              href="https://drive.google.com/file/d/1D-w95SekxUQfDYlUwUP7ulLqBimgN8vi/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center px-5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium text-sm hover:from-blue-700 hover:to-blue-600 transition-all border border-blue-400/30 shadow-md shadow-blue-600/20"
