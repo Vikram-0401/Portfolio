@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import Icon from './ui/Icon';
 
 const Navbar = () => {
-  const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(
     scrollY,
@@ -14,28 +15,23 @@ const Navbar = () => {
   );
 
   const navItems = [
-    { name: 'Home', icon: 'Home' },
-    { name: 'About', icon: 'User' },
-    { name: 'Skills', icon: 'Lightbulb' },
-    { name: 'Projects', icon: 'Layers' },
-    { name: 'Contact', icon: 'Mail' },
+    { name: 'Home', path: '/', icon: 'Home' },
+    { name: 'About', path: '/about', icon: 'User' },
+    { name: 'Skills', path: '/skills', icon: 'Lightbulb' },
+    { name: 'Projects', path: '/projects', icon: 'Layers' },
+    { name: 'Contact', path: '/contact', icon: 'Mail' },
   ];
+
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === path;
+    }
+    return location.pathname.startsWith(path);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll('section');
-      const scrollPosition = window.scrollY + 100;
-      
       setIsScrolled(window.scrollY > 50);
-
-      sections.forEach((section) => {
-        if (
-          section.offsetTop <= scrollPosition &&
-          section.offsetTop + section.offsetHeight > scrollPosition
-        ) {
-          setActiveSection(section.id);
-        }
-      });
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -88,29 +84,28 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <a href="#home" className="text-xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent flex items-center">
+              <Link to="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent flex items-center">
                 Vikram <span className="hidden sm:inline font-semibold">&nbsp;R</span>
-              </a>
+              </Link>
             </motion.div>
 
             {/* Desktop Menu */}
             <div className="hidden md:block">
               <div className="flex items-center space-x-2 lg:space-x-3">
-                {navItems.map(({ name, icon }) => (
-                  <motion.a
-                    key={name}
-                    href={`#${name.toLowerCase()}`}
-                    className={`relative flex items-center space-x-2 text-gray-300 hover:text-white px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
-                      activeSection === name.toLowerCase() 
-                        ? 'text-white bg-gradient-to-r from-blue-600/20 to-blue-500/10 border-b-2 border-blue-500 shadow-sm shadow-blue-500/10' 
-                        : 'border-b-2 border-transparent hover:bg-gray-800/30'
-                    }`}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ y: 0 }}
-                  >
-                    <Icon name={icon as any} className="w-4 h-4" />
-                    <span>{name}</span>
-                  </motion.a>
+                {navItems.map(({ name, path, icon }) => (
+                  <motion.div key={name} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
+                    <Link
+                      to={path}
+                      className={`relative flex items-center space-x-2 text-gray-300 hover:text-white px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
+                        isActive(path)
+                          ? 'text-white bg-gradient-to-r from-blue-600/20 to-blue-500/10 border-b-2 border-blue-500 shadow-sm shadow-blue-500/10' 
+                          : 'border-b-2 border-transparent hover:bg-gray-800/30'
+                      }`}
+                    >
+                      <Icon name={icon as any} className="w-4 h-4" />
+                      <span>{name}</span>
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -156,26 +151,26 @@ const Navbar = () => {
             className="mobile-menu md:hidden mobile-menu-container overflow-hidden"
           >
             <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-gray-800/90 backdrop-blur-md border border-gray-700/50 shadow-lg shadow-blue-900/20">
-              {navItems.map(({ name, icon }) => (
-                <motion.a
-                  key={name}
-                  href={`#${name.toLowerCase()}`}
-                  className={`flex items-center justify-between px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all ${
-                    activeSection === name.toLowerCase()
-                      ? 'text-white bg-gradient-to-r from-blue-600/20 to-blue-500/10 border-l-2 border-blue-500 shadow-sm shadow-blue-500/10'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-700/50 border-l-2 border-transparent'
-                  }`}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <div className="flex items-center space-x-3">
-                    <Icon name={icon as any} className="w-4 h-4 text-blue-400" />
-                    <span>{name}</span>
-                  </div>
-                  {activeSection === name.toLowerCase() && (
-                    <Icon name="ArrowRight" className="w-3.5 h-3.5 text-blue-400" />
-                  )}
-                </motion.a>
+              {navItems.map(({ name, path, icon }) => (
+                <motion.div key={name} whileTap={{ scale: 0.98 }}>
+                  <Link
+                    to={path}
+                    className={`flex items-center justify-between px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all ${
+                      isActive(path)
+                        ? 'text-white bg-gradient-to-r from-blue-600/20 to-blue-500/10 border-l-2 border-blue-500 shadow-sm shadow-blue-500/10'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-700/50 border-l-2 border-transparent'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Icon name={icon as any} className="w-4 h-4 text-blue-400" />
+                      <span>{name}</span>
+                    </div>
+                    {isActive(path) && (
+                      <Icon name="ArrowRight" className="w-3.5 h-3.5 text-blue-400" />
+                    )}
+                  </Link>
+                </motion.div>
               ))}
               <motion.a
                 href="https://drive.usercontent.google.com/u/0/uc?id=1gL3FjUjvzZMgdKBluiiJ9HPWkjxABSet&export=download"
