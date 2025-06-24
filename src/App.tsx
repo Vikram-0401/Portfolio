@@ -22,53 +22,39 @@ function App() {
     <div className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
       <ScrollToTop />
       <Navbar />
-      <main>
+      <main className="min-h-[calc(100vh-80px)]">
         <Routes>
-            <Route path="/" element={
-              <>
-                <section id="home">
-                  <Hero />
-                </section>
-                <section id="about">
-                  <About />
-                </section>
-                <section id="skills">
-                  <Skills />
-                </section>
-                <section id="projects">
-                  <Projects />
-                </section>
-                <section id="contact">
-                  <Contact />
-                </section>
-              </>
-            } />
-            <Route path="/about" element={
-              <section className="min-h-screen pt-20">
-                <About />
-              </section>
-            } />
-            <Route path="/skills" element={
-              <section className="min-h-screen pt-20">
-                <Skills />
-              </section>
-            } />
-            <Route path="/projects" element={
-              <section className="min-h-screen pt-20">
-                <Projects />
-              </section>
-            } />
-            <Route path="/contact" element={
-              <section className="min-h-screen pt-20">
-                <Contact />
-              </section>
-            } />
-          </Routes>
-        </main>
-        <footer className="py-6 text-center text-gray-400 border-t border-gray-800">
-          <p>© 2025 Vikram R. All rights reserved.</p>
-        </footer>
-      </div>
+          <Route path="/" element={
+            <section id="home" className="min-h-[calc(100vh-80px)] flex items-center">
+              <Hero />
+            </section>
+          } />
+          <Route path="/about" element={
+            <section id="about" className="min-h-[calc(100vh-80px)] pt-20">
+              <About />
+            </section>
+          } />
+          <Route path="/skills" element={
+            <section id="skills" className="min-h-[calc(100vh-80px)] pt-20">
+              <Skills />
+            </section>
+          } />
+          <Route path="/projects" element={
+            <section id="projects" className="min-h-[calc(100vh-80px)] pt-20">
+              <Projects />
+            </section>
+          } />
+          <Route path="/contact" element={
+            <section id="contact" className="min-h-[calc(100vh-80px)] pt-20">
+              <Contact />
+            </section>
+          } />
+        </Routes>
+      </main>
+      <footer className="py-6 text-center text-gray-400 border-t border-gray-800">
+        <p>© {new Date().getFullYear()} Vikram R. All rights reserved.</p>
+      </footer>
+    </div>
   );
 }
 

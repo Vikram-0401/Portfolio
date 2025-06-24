@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import { useNavigate } from 'react-router-dom';
 import Icon from './ui/Icon';
 import { FaReact, FaPython, FaDocker, FaGitAlt, FaJs, FaFireAlt } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiNextdotjs, SiPostman, SiLeetcode } from 'react-icons/si';
@@ -21,8 +22,14 @@ const skills = [
 ];
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
   return (
-    <section id="home" className="min-h-screen py-16 md:py-24 flex items-center justify-center relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center py-16 md:py-24 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Animated circles */}
@@ -102,22 +109,22 @@ const Hero = () => {
               transition={{ delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <motion.a
-                href="#contact"
+              <motion.button
+                onClick={() => handleNavigate('/contact')}
                 className="px-6 sm:px-8 py-2.5 sm:py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Get in Touch
-              </motion.a>
-              <motion.a
-                href="#projects"
+              </motion.button>
+              <motion.button
+                onClick={() => handleNavigate('/projects')}
                 className="px-6 sm:px-8 py-2.5 sm:py-3 border border-blue-500/30 text-blue-400 rounded-full font-medium hover:bg-blue-500/10 transition-colors text-sm sm:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 View Projects
-              </motion.a>
+              </motion.button>
             </motion.div>
 
             <motion.div
@@ -410,7 +417,7 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
