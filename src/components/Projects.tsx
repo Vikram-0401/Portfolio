@@ -16,7 +16,7 @@ const projects = [
     title: 'HiveMind',
     description: 'Modern blogging platform with clean interface. Serverless architecture for optimal performance.',
     image: '/images/HiveMind.png',
-    tech: ['React', 'TypeScript', 'Hono', 'Cloudflare Workers', 'Prisma', 'PostgreSQL'],
+    tech: ['React', 'TypeScript', 'Hono', 'Cloudflare Workers', 'PostgreSQL'],
     github: 'https://github.com/Vikram-0401',
     demo: 'https://thinkhivemind.netlify.app/',
     color: '#059669'
