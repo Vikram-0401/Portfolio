@@ -53,14 +53,14 @@ const Hero = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center py-16 md:py-24 relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center py-16 md:py-24 relative overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-300">
       {/* Clean Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Subtle geometric shapes */}
         {Array.from({ length: 6 }).map((_, i) => (
           <motion.div
             key={`shape-${i}`}
-            className="absolute opacity-5"
+            className="absolute opacity-5 dark:opacity-10"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -76,7 +76,7 @@ const Hero = () => {
             }}
           >
             <div 
-              className="w-16 h-16 border border-slate-200/20"
+              className="w-16 h-16 border border-slate-200 dark:border-slate-700"
               style={{
                 borderRadius: i % 2 === 0 ? '50%' : '8px',
               }}
@@ -86,7 +86,7 @@ const Hero = () => {
 
         {/* Clean gradient orbs */}
         <motion.div
-          className="absolute top-1/4 left-1/6 w-64 h-64 rounded-full opacity-10"
+          className="absolute top-1/4 left-1/6 w-64 h-64 rounded-full opacity-10 dark:opacity-5"
           style={{
             background: 'radial-gradient(circle, #0EA5E9, transparent)',
             filter: 'blur(40px)',
@@ -104,7 +104,7 @@ const Hero = () => {
         />
         
         <motion.div
-          className="absolute bottom-1/4 right-1/6 w-80 h-80 rounded-full opacity-8"
+          className="absolute bottom-1/4 right-1/6 w-80 h-80 rounded-full opacity-8 dark:opacity-4"
           style={{
             background: 'radial-gradient(circle, #059669, transparent)',
             filter: 'blur(50px)',
@@ -132,13 +132,13 @@ const Hero = () => {
             className="text-center lg:text-left space-y-8 lg:w-1/2"
           >
             <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 space-y-2"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white space-y-2 transition-colors duration-300"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
               <motion.span 
-                className="block text-slate-600"
+                className="block text-slate-600 dark:text-slate-400 transition-colors duration-300"
                 whileHover={{ 
                   color: '#0EA5E9',
                   transition: { duration: 0.3 }
@@ -167,7 +167,7 @@ const Hero = () => {
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="block text-2xl sm:text-3xl md:text-4xl text-slate-500 font-medium"
+                className="block text-2xl sm:text-3xl md:text-4xl text-slate-500 dark:text-slate-400 font-medium transition-colors duration-300"
               />
             </motion.h1>
 
@@ -175,7 +175,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg md:text-xl text-slate-600 max-w-2xl lg:mx-0 mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl lg:mx-0 mx-auto leading-relaxed transition-colors duration-300"
             >
               Passionate about creating innovative solutions and exploring the frontiers of AI & Machine Learning with clean, efficient code.
             </motion.p>
@@ -188,7 +188,7 @@ const Hero = () => {
             >
               <motion.button
                 onClick={() => handleNavigate('/contact')}
-                className="px-8 py-4 bg-slate-900 text-white rounded-lg font-medium relative overflow-hidden group transition-all duration-300"
+                className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg font-medium relative overflow-hidden group transition-all duration-300"
                 whileHover={{ 
                   scale: 1.02,
                   boxShadow: "0 10px 25px rgba(15, 23, 42, 0.2)",
@@ -206,7 +206,7 @@ const Hero = () => {
               
               <motion.button
                 onClick={() => handleNavigate('/projects')}
-                className="px-8 py-4 border-2 border-slate-300 text-slate-700 rounded-lg font-medium relative overflow-hidden group transition-all duration-300 hover:border-sky-500"
+                className="px-8 py-4 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-medium relative overflow-hidden group transition-all duration-300 hover:border-sky-500"
                 whileHover={{ 
                   scale: 1.02,
                   color: '#0EA5E9',
@@ -215,7 +215,7 @@ const Hero = () => {
               >
                 <span className="relative z-10">View Projects</span>
                 <motion.div
-                  className="absolute inset-0 bg-sky-50"
+                  className="absolute inset-0 bg-sky-50 dark:bg-sky-950"
                   initial={{ scale: 0 }}
                   whileHover={{ scale: 1 }}
                   transition={{ duration: 0.3 }}
@@ -244,7 +244,7 @@ const Hero = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-slate-900 transition-all duration-300 p-3 rounded-lg hover:bg-slate-100"
+                  className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-300 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
                   whileHover={{ 
                     scale: 1.1, 
                     y: -2,
@@ -270,7 +270,7 @@ const Hero = () => {
             <div className="relative w-full h-[500px]">
               {/* Clean container */}
               <motion.div
-                className="absolute inset-0 rounded-2xl overflow-hidden border border-slate-200 bg-white/50 backdrop-blur-sm"
+                className="absolute inset-0 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm transition-colors duration-300"
                 style={{ 
                   boxShadow: '0 20px 40px rgba(15, 23, 42, 0.08)',
                 }}
@@ -311,7 +311,7 @@ const Hero = () => {
                       >
                         {/* Skill node */}
                         <div 
-                          className="relative rounded-full flex items-center justify-center border-2 bg-white shadow-lg transition-all duration-300 group-hover:shadow-xl"
+                          className="relative rounded-full flex items-center justify-center border-2 bg-white dark:bg-slate-800 shadow-lg transition-all duration-300 group-hover:shadow-xl"
                           style={{
                             width: `${size}px`,
                             height: `${size}px`,
@@ -342,13 +342,12 @@ const Hero = () => {
                         
                         {/* Clean tooltip */}
                         <motion.div
-                          className="absolute text-sm font-medium rounded-lg px-3 py-2 z-30 pointer-events-none bg-white border shadow-lg"
+                          className="absolute text-sm font-medium rounded-lg px-3 py-2 z-30 pointer-events-none bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg transition-colors duration-300"
                           style={{ 
                             top: '120%',
                             left: '50%',
                             transform: 'translateX(-50%)',
                             color: skill.color,
-                            borderColor: `${skill.color}30`,
                             whiteSpace: 'nowrap',
                           }}
                           initial={{ opacity: 0, y: 10, scale: 0.9 }}
@@ -375,7 +374,8 @@ const Hero = () => {
                         y1={`${skill.position[1]}%`}
                         x2={`${centerSkill.position[0]}%`}
                         y2={`${centerSkill.position[1]}%`}
-                        stroke="#E2E8F0"
+                        stroke="currentColor"
+                        className="text-slate-300 dark:text-slate-600"
                         strokeWidth="1"
                         strokeDasharray="3 3"
                         initial={{ pathLength: 0, opacity: 0 }}

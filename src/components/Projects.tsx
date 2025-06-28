@@ -67,7 +67,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       onHoverEnd={() => setIsHovered(false)}
     >
       <motion.div 
-        className="relative flex flex-col rounded-2xl overflow-hidden h-[420px] bg-white border border-slate-200 shadow-lg transition-all duration-300"
+        className="relative flex flex-col rounded-2xl overflow-hidden h-[420px] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg transition-all duration-300"
         whileHover={{
           y: -8,
           boxShadow: `0 20px 40px ${project.color}20`,
@@ -98,16 +98,16 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         <div className="p-6 flex-1 flex flex-col">
           {/* Title */}
           <motion.h3 
-            className="text-xl font-bold text-slate-900 mb-3 transition-colors duration-300"
+            className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300"
             style={{
-              color: isHovered ? project.color : '#0F172A',
+              color: isHovered ? project.color : undefined,
             }}
           >
             {project.title}
           </motion.h3>
           
           {/* Description */}
-          <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
+          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-grow transition-colors duration-300">
             {project.description}
           </p>
           
@@ -119,9 +119,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                   key={tech}
                   className="px-3 py-1 rounded-full text-xs font-medium border transition-all duration-300"
                   style={{
-                    backgroundColor: isHovered ? `${project.color}10` : '#F8FAFC',
-                    borderColor: isHovered ? `${project.color}40` : '#E2E8F0',
-                    color: isHovered ? project.color : '#64748B',
+                    backgroundColor: isHovered ? `${project.color}10` : undefined,
+                    borderColor: isHovered ? `${project.color}40` : undefined,
+                    color: isHovered ? project.color : undefined,
                   }}
                   whileHover={{ 
                     scale: 1.05,
@@ -141,10 +141,10 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center p-3 rounded-xl border-2 transition-all duration-300 bg-white"
+                className="flex items-center justify-center p-3 rounded-xl border-2 transition-all duration-300 bg-white dark:bg-slate-800"
                 style={{
-                  borderColor: isHovered ? project.color : '#E2E8F0',
-                  color: isHovered ? project.color : '#64748B',
+                  borderColor: isHovered ? project.color : undefined,
+                  color: isHovered ? project.color : undefined,
                 }}
                 whileHover={{ 
                   scale: 1.05,
@@ -163,7 +163,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 className="flex items-center justify-center p-3 rounded-xl border-2 transition-all duration-300"
                 style={{
                   borderColor: project.color,
-                  backgroundColor: isHovered ? project.color : 'white',
+                  backgroundColor: isHovered ? project.color : 'transparent',
                   color: isHovered ? 'white' : project.color,
                 }}
                 whileHover={{ 
@@ -185,7 +185,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-white">
+    <section id="projects" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -195,7 +195,7 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900"
+            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -212,7 +212,7 @@ const Projects = () => {
           />
           
           <motion.p
-            className="text-slate-600 max-w-2xl mx-auto text-lg"
+            className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg transition-colors duration-300"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -239,7 +239,7 @@ const Projects = () => {
             href="https://github.com/Vikram-0401?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 bg-slate-900 text-white rounded-lg font-semibold text-lg relative overflow-hidden group transition-all duration-300"
+            className="inline-flex items-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg font-semibold text-lg relative overflow-hidden group transition-all duration-300"
             whileHover={{ 
               scale: 1.02,
               boxShadow: "0 10px 25px rgba(15, 23, 42, 0.2)",

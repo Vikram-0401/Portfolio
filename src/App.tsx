@@ -6,6 +6,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import { useEffect } from 'react';
+import { useTheme } from './hooks/useTheme';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -18,8 +19,11 @@ function ScrollToTop() {
 }
 
 function App() {
+  // Initialize theme
+  useTheme();
+
   return (
-    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white overflow-x-hidden transition-colors duration-300">
       <ScrollToTop />
       <Navbar />
       <main className="min-h-[calc(100vh-80px)]">
@@ -51,7 +55,7 @@ function App() {
           } />
         </Routes>
       </main>
-      <footer className="py-6 text-center text-slate-500 border-t border-slate-200 bg-slate-50">
+      <footer className="py-6 text-center text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300">
         <p>© {new Date().getFullYear()} Vikram R. All rights reserved.</p>
       </footer>
     </div>

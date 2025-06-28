@@ -33,7 +33,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen py-24 flex items-center bg-slate-50">
+    <section id="about" className="min-h-screen py-24 flex items-center bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -43,7 +43,7 @@ const About = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900"
+            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -69,7 +69,7 @@ const About = () => {
           >
             <div className="relative w-80 h-80 mx-auto">
               <motion.div 
-                className="relative rounded-2xl overflow-hidden h-full border-4 border-white shadow-2xl"
+                className="relative rounded-2xl overflow-hidden h-full border-4 border-white dark:border-slate-700 shadow-2xl transition-colors duration-300"
                 whileHover={{
                   scale: 1.02,
                   boxShadow: "0 25px 50px rgba(15, 23, 42, 0.15)",
@@ -86,7 +86,7 @@ const About = () => {
               
               {/* Clean decorative ring */}
               <motion.div
-                className="absolute -inset-4 rounded-2xl border-2 border-sky-200 opacity-50"
+                className="absolute -inset-4 rounded-2xl border-2 border-sky-200 dark:border-sky-800 opacity-50 transition-colors duration-300"
                 animate={{
                   rotate: [0, 360],
                 }}
@@ -106,8 +106,8 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="lg:w-2/3"
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-              <div className="space-y-8 text-slate-700">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-700 transition-colors duration-300">
+              <div className="space-y-8 text-slate-700 dark:text-slate-300 transition-colors duration-300">
                 {/* Introduction */}
                 <motion.div 
                   className="space-y-6"
@@ -117,11 +117,11 @@ const About = () => {
                 >
                   <p className="text-lg leading-relaxed">
                     I'm Vikram, a Computer Science undergraduate at Siddaganga Institute of Technology, specializing in{' '}
-                    <span className="font-semibold text-sky-600">AI and Machine Learning</span>. 
+                    <span className="font-semibold text-sky-600 dark:text-sky-400">AI and Machine Learning</span>. 
                     I'm passionate about{' '}
-                    <span className="font-semibold text-emerald-600">web development</span>
+                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">web development</span>
                     {' '}and{' '}
-                    <span className="font-semibold text-amber-600">DSA</span>
+                    <span className="font-semibold text-amber-600 dark:text-amber-400">DSA</span>
                     , focused on building meaningful solutions using modern technologies.
                   </p>
                   
@@ -137,7 +137,7 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <h3 className="text-2xl font-bold text-slate-900">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white transition-colors duration-300">
                     Beyond Tech
                   </h3>
                   
@@ -146,10 +146,10 @@ const About = () => {
                     {hobbies.map((hobby, index) => (
                       <motion.div
                         key={index}
-                        className="group relative p-4 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer transition-all duration-300"
+                        className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 cursor-pointer transition-all duration-300"
                         style={{
-                          borderColor: hoveredHobby === index ? hobby.color : '#E2E8F0',
-                          backgroundColor: hoveredHobby === index ? `${hobby.color}10` : '#F8FAFC',
+                          borderColor: hoveredHobby === index ? hobby.color : undefined,
+                          backgroundColor: hoveredHobby === index ? `${hobby.color}10` : undefined,
                         }}
                         whileHover={{ 
                           y: -4,
@@ -164,7 +164,7 @@ const About = () => {
                       >
                         <div className="flex flex-col items-center text-center space-y-3">
                           <motion.div 
-                            className="p-3 rounded-full bg-white border-2 transition-all duration-300"
+                            className="p-3 rounded-full bg-white dark:bg-slate-700 border-2 transition-all duration-300"
                             style={{ 
                               borderColor: hobby.color,
                               color: hobby.color,
@@ -179,12 +179,12 @@ const About = () => {
                           
                           <h4 
                             className="font-semibold text-sm transition-colors duration-300"
-                            style={{ color: hoveredHobby === index ? hobby.color : '#374151' }}
+                            style={{ color: hoveredHobby === index ? hobby.color : undefined }}
                           >
                             {hobby.title}
                           </h4>
                           
-                          <p className="text-xs text-slate-600 leading-relaxed">
+                          <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-300">
                             {hobby.description}
                           </p>
                         </div>

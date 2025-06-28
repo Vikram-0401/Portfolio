@@ -7,7 +7,7 @@ const Contact = () => {
   const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
 
   return (
-    <section id="contact" className="py-24 bg-slate-50">
+    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -18,7 +18,7 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900"
+            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -35,7 +35,7 @@ const Contact = () => {
           />
           
           <motion.p 
-            className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed"
+            className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg leading-relaxed transition-colors duration-300"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -54,7 +54,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-3/5"
           >
-            <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-lg border border-slate-200 h-full">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 lg:p-12 shadow-lg border border-slate-200 dark:border-slate-700 h-full transition-colors duration-300">
               <div className="space-y-8">
                 {/* Contact Methods */}
                 <div className="space-y-6">
@@ -64,7 +64,7 @@ const Contact = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div 
-                      className="w-14 h-14 bg-sky-100 rounded-xl flex items-center justify-center border border-sky-200 flex-shrink-0"
+                      className="w-14 h-14 bg-sky-100 dark:bg-sky-900 rounded-xl flex items-center justify-center border border-sky-200 dark:border-sky-800 flex-shrink-0 transition-colors duration-300"
                       whileHover={{ 
                         scale: 1.05,
                         backgroundColor: '#0EA5E9',
@@ -72,15 +72,15 @@ const Contact = () => {
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Icon name="Mail" className="w-6 h-6 text-sky-600 group-hover:text-white transition-colors duration-200" />
+                      <Icon name="Mail" className="w-6 h-6 text-sky-600 dark:text-sky-400 group-hover:text-white transition-colors duration-200" />
                     </motion.div>
                     <div className="min-w-0">
-                      <h3 className="text-slate-500 text-sm font-medium mb-2">
+                      <h3 className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2 transition-colors duration-300">
                         Email
                       </h3>
                       <motion.a
                         href="mailto:vikramshettyr4@gmail.com"
-                        className="text-slate-900 text-xl hover:text-sky-600 flex items-center gap-2 transition-colors duration-300"
+                        className="text-slate-900 dark:text-white text-xl hover:text-sky-600 dark:hover:text-sky-400 flex items-center gap-2 transition-colors duration-300"
                         whileHover={{ scale: 1.02 }}
                       >
                         vikramshettyr4@gmail.com
@@ -101,7 +101,7 @@ const Contact = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div 
-                      className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center border border-emerald-200 flex-shrink-0"
+                      className="w-14 h-14 bg-emerald-100 dark:bg-emerald-900 rounded-xl flex items-center justify-center border border-emerald-200 dark:border-emerald-800 flex-shrink-0 transition-colors duration-300"
                       whileHover={{ 
                         scale: 1.05,
                         backgroundColor: '#059669',
@@ -109,13 +109,13 @@ const Contact = () => {
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Icon name="MessageSquare" className="w-6 h-6 text-emerald-600 group-hover:text-white transition-colors duration-200" />
+                      <Icon name="MessageSquare" className="w-6 h-6 text-emerald-600 dark:text-emerald-400 group-hover:text-white transition-colors duration-200" />
                     </motion.div>
                     <div className="min-w-0">
-                      <h3 className="text-slate-500 text-sm font-medium mb-2">
+                      <h3 className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2 transition-colors duration-300">
                         Let's chat
                       </h3>
-                      <p className="text-slate-900 text-xl">
+                      <p className="text-slate-900 dark:text-white text-xl transition-colors duration-300">
                         I'm available for freelance projects and full-time positions.
                       </p>
                     </div>
@@ -127,7 +127,7 @@ const Contact = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div 
-                      className="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center border border-amber-200 flex-shrink-0"
+                      className="w-14 h-14 bg-amber-100 dark:bg-amber-900 rounded-xl flex items-center justify-center border border-amber-200 dark:border-amber-800 flex-shrink-0 transition-colors duration-300"
                       whileHover={{ 
                         scale: 1.05,
                         backgroundColor: '#F59E0B',
@@ -135,13 +135,13 @@ const Contact = () => {
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Icon name="MapPin" className="w-6 h-6 text-amber-600 group-hover:text-white transition-colors duration-200" />
+                      <Icon name="MapPin" className="w-6 h-6 text-amber-600 dark:text-amber-400 group-hover:text-white transition-colors duration-200" />
                     </motion.div>
                     <div className="min-w-0">
-                      <h3 className="text-slate-500 text-sm font-medium mb-2">
+                      <h3 className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2 transition-colors duration-300">
                         Location
                       </h3>
-                      <p className="text-slate-900 text-xl">
+                      <p className="text-slate-900 dark:text-white text-xl transition-colors duration-300">
                         Bengaluru, Karnataka, India
                       </p>
                     </div>
@@ -151,7 +151,7 @@ const Contact = () => {
                 {/* Contact Button */}
                 <motion.button
                   onClick={() => window.location.href = 'mailto:vikramshettyr4@gmail.com'}
-                  className="w-full py-4 bg-slate-900 text-white rounded-xl transition-all text-center font-semibold shadow-lg text-lg relative overflow-hidden group"
+                  className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl transition-all text-center font-semibold shadow-lg text-lg relative overflow-hidden group duration-300"
                   whileHover={{ 
                     scale: 1.02,
                     boxShadow: "0 10px 25px rgba(15, 23, 42, 0.2)",
@@ -179,9 +179,9 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full lg:w-2/5"
           >
-            <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border border-slate-200 h-full flex flex-col">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 lg:p-10 shadow-lg border border-slate-200 dark:border-slate-700 h-full flex flex-col transition-colors duration-300">
               <motion.h3 
-                className="text-2xl font-bold text-slate-900 mb-8"
+                className="text-2xl font-bold text-slate-900 dark:text-white mb-8 transition-colors duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -222,10 +222,10 @@ const Contact = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-6 rounded-xl flex flex-col items-center justify-center gap-4 border border-slate-200 bg-slate-50 relative overflow-hidden group transition-all duration-300"
+                    className="p-6 rounded-xl flex flex-col items-center justify-center gap-4 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 relative overflow-hidden group transition-all duration-300"
                     style={{
-                      borderColor: hoveredSocial === index ? color : '#E2E8F0',
-                      backgroundColor: hoveredSocial === index ? `${color}10` : '#F8FAFC',
+                      borderColor: hoveredSocial === index ? color : undefined,
+                      backgroundColor: hoveredSocial === index ? `${color}10` : undefined,
                     }}
                     whileHover={{ 
                       y: -4,
@@ -240,7 +240,7 @@ const Contact = () => {
                     transition={{ delay: 0.5 + index * 0.1 }}
                   >
                     <motion.div 
-                      className="p-3 rounded-xl bg-white border-2 transition-all duration-300"
+                      className="p-3 rounded-xl bg-white dark:bg-slate-700 border-2 transition-all duration-300"
                       style={{ 
                         borderColor: color,
                         color: color,
@@ -255,7 +255,7 @@ const Contact = () => {
                     
                     <span 
                       className="font-semibold text-lg transition-colors duration-300"
-                      style={{ color: hoveredSocial === index ? color : '#374151' }}
+                      style={{ color: hoveredSocial === index ? color : undefined }}
                     >
                       {name}
                     </span>
@@ -264,7 +264,7 @@ const Contact = () => {
               </div>
               
               <motion.p 
-                className="text-slate-500 text-center mt-8"
+                className="text-slate-500 dark:text-slate-400 text-center mt-8 transition-colors duration-300"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}

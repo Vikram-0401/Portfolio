@@ -29,7 +29,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-white">
+    <section id="skills" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -40,7 +40,7 @@ const SkillsSection = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900"
+            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -57,7 +57,7 @@ const SkillsSection = () => {
           />
           
           <motion.p
-            className="text-slate-600 max-w-2xl mx-auto text-lg"
+            className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg transition-colors duration-300"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -79,12 +79,12 @@ const SkillsSection = () => {
             >
               {/* Category Card */}
               <motion.div
-                className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 transition-all duration-300"
+                className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-700 transition-all duration-300"
                 style={{
-                  borderColor: hoveredCategory === categoryIndex ? category.color : '#E2E8F0',
+                  borderColor: hoveredCategory === categoryIndex ? category.color : undefined,
                   boxShadow: hoveredCategory === categoryIndex 
                     ? `0 20px 40px ${category.color}20` 
-                    : '0 10px 25px rgba(15, 23, 42, 0.08)',
+                    : undefined,
                 }}
                 whileHover={{
                   y: -4,
@@ -101,10 +101,10 @@ const SkillsSection = () => {
                   transition={{ delay: 0.2 + categoryIndex * 0.1 }}
                 >
                   <motion.div
-                    className="text-4xl p-3 rounded-xl border-2 bg-white transition-all duration-300"
+                    className="text-4xl p-3 rounded-xl border-2 bg-white dark:bg-slate-700 transition-all duration-300"
                     style={{ 
                       borderColor: category.color,
-                      backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : 'white',
+                      backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
                     }}
                     whileHover={{ 
                       scale: 1.1,
@@ -118,12 +118,12 @@ const SkillsSection = () => {
                     <motion.h3 
                       className="text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300"
                       style={{ 
-                        color: hoveredCategory === categoryIndex ? category.color : '#0F172A' 
+                        color: hoveredCategory === categoryIndex ? category.color : undefined 
                       }}
                     >
                       {category.title}
                     </motion.h3>
-                    <p className="text-slate-600">
+                    <p className="text-slate-600 dark:text-slate-400 transition-colors duration-300">
                       {category.description}
                     </p>
                   </div>
@@ -146,10 +146,10 @@ const SkillsSection = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skill}
-                      className="group relative p-4 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer transition-all duration-300"
+                      className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 cursor-pointer transition-all duration-300"
                       style={{
-                        borderColor: hoveredCategory === categoryIndex ? `${category.color}40` : '#E2E8F0',
-                        backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : '#F8FAFC',
+                        borderColor: hoveredCategory === categoryIndex ? `${category.color}40` : undefined,
+                        backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
                       }}
                       variants={{
                         hidden: { opacity: 0, y: 20 },
@@ -179,7 +179,7 @@ const SkillsSection = () => {
                       <span 
                         className="text-sm md:text-base font-medium text-center block transition-colors duration-300"
                         style={{ 
-                          color: hoveredCategory === categoryIndex ? category.color : '#374151' 
+                          color: hoveredCategory === categoryIndex ? category.color : undefined 
                         }}
                       >
                         {skill}

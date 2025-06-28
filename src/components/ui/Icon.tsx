@@ -3,7 +3,7 @@ import {
   Home, User, Lightbulb, Layers, Mail, Menu, X, Download, 
   ChevronDown, Github, Linkedin, Twitter, ArrowRight,
   Compass, PenTool, Gamepad2, MessageSquare, ExternalLink,
-  MapPin
+  MapPin, Sun, Moon, Monitor
 } from 'lucide-react';
 
 // Map of icon names to components
@@ -26,7 +26,10 @@ const iconMap = {
   Gamepad2,
   MessageSquare,
   ExternalLink,
-  MapPin
+  MapPin,
+  Sun,
+  Moon,
+  Monitor
 };
 
 interface IconProps {
