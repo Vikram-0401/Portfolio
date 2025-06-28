@@ -11,7 +11,7 @@ const Navbar = () => {
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(18, 18, 18, 0)', 'rgba(10, 10, 20, 0.95)']
+    ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.95)']
   );
 
   const navItems = [
@@ -38,7 +38,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -51,7 +50,6 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
   
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -68,23 +66,18 @@ const Navbar = () => {
     <motion.nav
       style={{ backgroundColor }}
       className={`fixed w-full z-50 backdrop-blur-md py-4 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg shadow-blue-900/20' : ''
+        isScrolled ? 'shadow-lg border-b border-slate-200' : ''
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between">
-          {/* Decorative border container */}
-          <div className={`absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-600/20 via-purple-500/10 to-blue-600/20 p-[1px] pointer-events-none transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="h-full w-full rounded-xl sm:rounded-2xl bg-gray-900/70 backdrop-blur-sm" />
-          </div>
-
           <div className="relative flex items-center justify-between w-full px-4 sm:px-6 py-2.5">
             <motion.div
               className="flex items-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Link to="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent flex items-center">
+              <Link to="/" className="text-xl font-bold bg-gradient-to-r from-sky-600 to-emerald-600 bg-clip-text text-transparent flex items-center">
                 Vikram <span className="hidden sm:inline font-semibold">&nbsp;R</span>
               </Link>
             </motion.div>
@@ -96,10 +89,10 @@ const Navbar = () => {
                   <motion.div key={name} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
                     <Link
                       to={path}
-                      className={`relative flex items-center space-x-2 text-gray-300 hover:text-white px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
+                      className={`relative flex items-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
                         isActive(path)
-                          ? 'text-white bg-gradient-to-r from-blue-600/20 to-blue-500/10 border-b-2 border-blue-500 shadow-sm shadow-blue-500/10' 
-                          : 'border-b-2 border-transparent hover:bg-gray-800/30'
+                          ? 'text-slate-900 bg-slate-100 border-b-2 border-sky-500' 
+                          : 'text-slate-600 hover:text-slate-900 border-b-2 border-transparent hover:bg-slate-50'
                       }`}
                     >
                       <Icon name={icon as any} className="w-4 h-4" />
@@ -118,7 +111,7 @@ const Navbar = () => {
                   e.stopPropagation();
                   setIsMenuOpen(!isMenuOpen);
                 }}
-                className="text-gray-300 p-2.5 rounded-lg bg-gray-800/70 border border-gray-700/50 hover:bg-gray-700/50 hover:border-gray-600/50 transition-colors"
+                className="text-slate-600 p-2.5 rounded-lg bg-slate-100 border border-slate-200 hover:bg-slate-200 transition-colors"
                 aria-label="Toggle mobile menu"
               >
                 {isMenuOpen ? <Icon name="X" className="w-5 h-5" /> : <Icon name="Menu" className="w-5 h-5" />}
@@ -129,7 +122,7 @@ const Navbar = () => {
               href="https://drive.google.com/file/d/1D-w95SekxUQfDYlUwUP7ulLqBimgN8vi/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center px-5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium text-sm hover:from-blue-700 hover:to-blue-600 transition-all border border-blue-400/30 shadow-md shadow-blue-600/20"
+              className="hidden md:flex items-center px-5 py-2 rounded-lg bg-slate-900 text-white font-medium text-sm hover:bg-slate-800 transition-all border shadow-md"
               whileHover={{ y: -2 }}
               whileTap={{ y: 0 }}
             >
@@ -150,24 +143,24 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="mobile-menu md:hidden mobile-menu-container overflow-hidden"
           >
-            <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-gray-800/90 backdrop-blur-md border border-gray-700/50 shadow-lg shadow-blue-900/20">
+            <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-white shadow-lg border border-slate-200">
               {navItems.map(({ name, path, icon }) => (
                 <motion.div key={name} whileTap={{ scale: 0.98 }}>
                   <Link
                     to={path}
                     className={`flex items-center justify-between px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all ${
                       isActive(path)
-                        ? 'text-white bg-gradient-to-r from-blue-600/20 to-blue-500/10 border-l-2 border-blue-500 shadow-sm shadow-blue-500/10'
-                        : 'text-gray-300 hover:text-white hover:bg-gray-700/50 border-l-2 border-transparent'
+                        ? 'text-slate-900 bg-slate-100 border-l-2 border-sky-500'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 border-l-2 border-transparent'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <div className="flex items-center space-x-3">
-                      <Icon name={icon as any} className="w-4 h-4 text-blue-400" />
+                      <Icon name={icon as any} className="w-4 h-4 text-sky-600" />
                       <span>{name}</span>
                     </div>
                     {isActive(path) && (
-                      <Icon name="ArrowRight" className="w-3.5 h-3.5 text-blue-400" />
+                      <Icon name="ArrowRight" className="w-3.5 h-3.5 text-sky-600" />
                     )}
                   </Link>
                 </motion.div>
@@ -176,7 +169,7 @@ const Navbar = () => {
                 href="https://drive.usercontent.google.com/u/0/uc?id=1gL3FjUjvzZMgdKBluiiJ9HPWkjxABSet&export=download"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 mt-4 px-5 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium text-sm shadow-md shadow-blue-900/20 border border-blue-400/30"
+                className="flex items-center justify-center gap-2 mt-4 px-5 py-3 rounded-lg bg-slate-900 text-white font-medium text-sm shadow-md"
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setIsMenuOpen(false)}
               >

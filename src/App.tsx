@@ -19,7 +19,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
       <ScrollToTop />
       <Navbar />
       <main className="min-h-[calc(100vh-80px)]">
@@ -51,7 +51,7 @@ function App() {
           } />
         </Routes>
       </main>
-      <footer className="py-6 text-center text-gray-400 border-t border-gray-800">
+      <footer className="py-6 text-center text-slate-500 border-t border-slate-200 bg-slate-50">
         <p>© {new Date().getFullYear()} Vikram R. All rights reserved.</p>
       </footer>
     </div>
