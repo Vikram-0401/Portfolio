@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   Home, User, Lightbulb, Layers, Mail, Menu, X, Download, 
   ChevronDown, Github, Linkedin, Twitter, ArrowRight,
-  Compass, PenTool, Gamepad2, MessageSquare, ExternalLink
+  Compass, PenTool, Gamepad2, MessageSquare, ExternalLink,
+  MapPin
 } from 'lucide-react';
 
 // Map of icon names to components
@@ -24,7 +25,8 @@ const iconMap = {
   PenTool,
   Gamepad2,
   MessageSquare,
-  ExternalLink
+  ExternalLink,
+  MapPin
 };
 
 interface IconProps {
@@ -56,4 +58,4 @@ const Icon: React.FC<IconProps> = ({
   );
 };
 
-export default Icon; 
+export default Icon;
