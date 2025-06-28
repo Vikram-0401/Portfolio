@@ -7,7 +7,7 @@ const Contact = () => {
   const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
 
   return (
-    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -54,7 +54,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-3/5"
           >
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 lg:p-12 shadow-lg border border-slate-200 dark:border-slate-700 h-full transition-colors duration-300">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 lg:p-12 shadow-lg border border-slate-200 dark:border-slate-700 h-full transition-colors duration-300">
               <div className="space-y-8">
                 {/* Contact Methods */}
                 <div className="space-y-6">
@@ -64,7 +64,7 @@ const Contact = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div 
-                      className="w-14 h-14 bg-sky-100 dark:bg-sky-900 rounded-xl flex items-center justify-center border border-sky-200 dark:border-sky-800 flex-shrink-0 transition-colors duration-300"
+                      className="w-14 h-14 bg-sky-100 dark:bg-sky-900/50 rounded-xl flex items-center justify-center border border-sky-200 dark:border-sky-700 flex-shrink-0 transition-colors duration-300"
                       whileHover={{ 
                         scale: 1.05,
                         backgroundColor: '#0EA5E9',
@@ -101,7 +101,7 @@ const Contact = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div 
-                      className="w-14 h-14 bg-emerald-100 dark:bg-emerald-900 rounded-xl flex items-center justify-center border border-emerald-200 dark:border-emerald-800 flex-shrink-0 transition-colors duration-300"
+                      className="w-14 h-14 bg-emerald-100 dark:bg-emerald-900/50 rounded-xl flex items-center justify-center border border-emerald-200 dark:border-emerald-700 flex-shrink-0 transition-colors duration-300"
                       whileHover={{ 
                         scale: 1.05,
                         backgroundColor: '#059669',
@@ -127,7 +127,7 @@ const Contact = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div 
-                      className="w-14 h-14 bg-amber-100 dark:bg-amber-900 rounded-xl flex items-center justify-center border border-amber-200 dark:border-amber-800 flex-shrink-0 transition-colors duration-300"
+                      className="w-14 h-14 bg-amber-100 dark:bg-amber-900/50 rounded-xl flex items-center justify-center border border-amber-200 dark:border-amber-700 flex-shrink-0 transition-colors duration-300"
                       whileHover={{ 
                         scale: 1.05,
                         backgroundColor: '#F59E0B',
@@ -179,7 +179,7 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full lg:w-2/5"
           >
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 lg:p-10 shadow-lg border border-slate-200 dark:border-slate-700 h-full flex flex-col transition-colors duration-300">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 lg:p-10 shadow-lg border border-slate-200 dark:border-slate-700 h-full flex flex-col transition-colors duration-300">
               <motion.h3 
                 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 transition-colors duration-300"
                 initial={{ opacity: 0, y: 20 }}
@@ -195,19 +195,28 @@ const Contact = () => {
                     icon: 'Github', 
                     name: 'GitHub',
                     href: 'https://github.com/Vikram-0401', 
-                    color: '#374151',
+                    color: '#6B7280',
+                    darkColor: '#F8FAFC', // Light color for dark mode
+                    bgLight: '#F8FAFC',
+                    bgDark: '#374151',
                   },
                   { 
                     icon: 'Linkedin', 
                     name: 'LinkedIn',
                     href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/', 
                     color: '#0EA5E9',
+                    darkColor: '#0EA5E9',
+                    bgLight: '#EFF6FF',
+                    bgDark: '#1E3A8A',
                   },
                   { 
                     icon: 'Twitter', 
                     name: 'Twitter',
                     href: 'https://x.com/VikramS87249739?mx=2', 
                     color: '#0EA5E9',
+                    darkColor: '#0EA5E9',
+                    bgLight: '#EFF6FF',
+                    bgDark: '#1E3A8A',
                   },
                   { 
                     icon: 'custom', 
@@ -215,22 +224,33 @@ const Contact = () => {
                     name: 'LeetCode',
                     href: 'https://leetcode.com/u/Vikram0401/', 
                     color: '#F59E0B',
+                    darkColor: '#F59E0B',
+                    bgLight: '#FFFBEB',
+                    bgDark: '#92400E',
                   }
-                ].map(({ icon, customIcon, name, href, color }, index) => (
+                ].map(({ icon, customIcon, name, href, color, darkColor, bgLight, bgDark }, index) => (
                   <motion.a
                     key={href}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-6 rounded-xl flex flex-col items-center justify-center gap-4 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 relative overflow-hidden group transition-all duration-300"
+                    className="p-6 rounded-xl flex flex-col items-center justify-center gap-4 border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 relative overflow-hidden group transition-all duration-300 hover:shadow-lg"
                     style={{
-                      borderColor: hoveredSocial === index ? color : undefined,
-                      backgroundColor: hoveredSocial === index ? `${color}10` : undefined,
+                      borderColor: hoveredSocial === index 
+                        ? (name === 'GitHub' ? '#F8FAFC' : color)
+                        : undefined,
+                      backgroundColor: hoveredSocial === index 
+                        ? (name === 'GitHub' 
+                          ? 'rgba(248, 250, 252, 0.1)' 
+                          : `${color}10`) 
+                        : undefined,
                     }}
                     whileHover={{ 
                       y: -4,
                       scale: 1.02,
-                      boxShadow: `0 10px 25px ${color}20`,
+                      boxShadow: name === 'GitHub' 
+                        ? '0 10px 25px rgba(248, 250, 252, 0.1)' 
+                        : `0 10px 25px ${color}20`,
                     }}
                     whileTap={{ scale: 0.98 }}
                     onHoverStart={() => setHoveredSocial(index)}
@@ -240,25 +260,68 @@ const Contact = () => {
                     transition={{ delay: 0.5 + index * 0.1 }}
                   >
                     <motion.div 
-                      className="p-3 rounded-xl bg-white dark:bg-slate-700 border-2 transition-all duration-300"
+                      className="p-3 rounded-xl border-2 transition-all duration-300"
                       style={{ 
-                        borderColor: color,
-                        color: color,
+                        borderColor: name === 'GitHub' 
+                          ? (hoveredSocial === index ? '#F8FAFC' : '#6B7280')
+                          : color,
+                        backgroundColor: name === 'GitHub'
+                          ? (hoveredSocial === index ? '#374151' : '#F8FAFC')
+                          : (hoveredSocial === index ? color : 'white'),
+                        color: name === 'GitHub'
+                          ? (hoveredSocial === index ? '#F8FAFC' : '#374151')
+                          : (hoveredSocial === index ? 'white' : color),
                       }}
                       whileHover={{ 
                         scale: 1.1,
                         rotate: 5,
                       }}
                     >
-                      {icon === 'custom' ? customIcon : <Icon name={icon} className="w-6 h-6" />}
+                      {icon === 'custom' ? (
+                        <div style={{ 
+                          color: name === 'GitHub'
+                            ? (hoveredSocial === index ? '#F8FAFC' : '#374151')
+                            : (hoveredSocial === index ? 'white' : color)
+                        }}>
+                          {customIcon}
+                        </div>
+                      ) : (
+                        <Icon 
+                          name={icon} 
+                          className="w-6 h-6" 
+                          style={{ 
+                            color: name === 'GitHub'
+                              ? (hoveredSocial === index ? '#F8FAFC' : '#374151')
+                              : (hoveredSocial === index ? 'white' : color)
+                          }}
+                        />
+                      )}
                     </motion.div>
                     
                     <span 
-                      className="font-semibold text-lg transition-colors duration-300"
-                      style={{ color: hoveredSocial === index ? color : undefined }}
+                      className="font-semibold text-lg transition-colors duration-300 text-slate-700 dark:text-slate-200"
+                      style={{ 
+                        color: hoveredSocial === index 
+                          ? (name === 'GitHub' ? '#F8FAFC' : color)
+                          : undefined 
+                      }}
                     >
                       {name}
                     </span>
+
+                    {/* Enhanced hover effect for GitHub */}
+                    {name === 'GitHub' && hoveredSocial === index && (
+                      <motion.div
+                        className="absolute inset-0 rounded-xl pointer-events-none"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(248, 250, 252, 0.1), rgba(107, 114, 128, 0.1))',
+                          border: '1px solid rgba(248, 250, 252, 0.2)',
+                        }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
                   </motion.a>
                 ))}
               </div>
