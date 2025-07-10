@@ -9,7 +9,7 @@ const SkillsSection = () => {
       title: "Development",
       icon: "⚡",
       color: "#0EA5E9",
-      skills: ['NextJs', 'MongoDB', 'React', 'Express', 'TypeScript', 'Firebase', 'Prisma', 'Cloudflare', 'Tailwind'],
+      skills: ['React', 'MongoDB', 'Express', 'TypeScript', 'Firebase', 'Prisma', 'Cloudflare', 'Tailwind'],
       description: "Full-stack development with modern frameworks"
     },
     {
