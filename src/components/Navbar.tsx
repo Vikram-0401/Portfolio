@@ -6,18 +6,18 @@ import ThemeToggle from './ui/ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
-  const backgroundColor = useTransform(
+  const backgroundOpacity = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.95)']
+    [0, 0.95]
   );
-  const darkBackgroundColor = useTransform(
+  
+  const shadowOpacity = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(15, 23, 42, 0)', 'rgba(15, 23, 42, 0.95)']
+    [0, 0.1]
   );
 
   const navItems = [
@@ -35,14 +35,6 @@ const Navbar = () => {
     return location.pathname.startsWith(path);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -70,11 +62,12 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed w-full z-50 backdrop-blur-md py-4 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg border-b border-slate-200 dark:border-slate-800' : ''
-      }`}
+      className="fixed w-full z-50 py-4 transition-all duration-300"
       style={{
-        background: `light-dark(${backgroundColor.get()}, ${darkBackgroundColor.get()})`,
+        background: `rgba(var(--background-start-rgb), ${backgroundOpacity.get()})`,
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        boxShadow: `0 4px 30px rgba(0, 0, 0, ${shadowOpacity.get()})`,
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
