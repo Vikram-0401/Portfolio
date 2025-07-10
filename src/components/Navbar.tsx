@@ -123,7 +123,7 @@ const Navbar = () => {
               </div>
 
               <motion.a
-                href="https://drive.google.com/file/d/1D-w95SekxUQfDYlUwUP7ulLqBimgN8vi/view?usp=sharing"
+                href="https://drive.google.com/file/d/1r8da9ElbiYY6LcWjJj6GgjrXa-xNZ6K_/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center px-5 py-2 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm hover:bg-slate-800 dark:hover:bg-slate-100 transition-all duration-300 border shadow-md"
@@ -171,7 +171,7 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <motion.a
-                href="https://drive.usercontent.google.com/u/0/uc?id=1gL3FjUjvzZMgdKBluiiJ9HPWkjxABSet&export=download"
+                href="https://drive.google.com/file/d/1r8da9ElbiYY6LcWjJj6GgjrXa-xNZ6K_/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 mt-4 px-5 py-3 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm shadow-md transition-colors duration-300"
