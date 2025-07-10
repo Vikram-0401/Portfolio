@@ -9,7 +9,7 @@ const SkillsSection = () => {
       title: "Development",
       icon: "⚡",
       color: "#0EA5E9",
-      skills: ['MongoDB', 'React', 'Express', 'TypeScript', 'Firebase'],
+      skills: ['NextJs', 'MongoDB', 'React', 'Express', 'TypeScript', 'Firebase', 'Prisma', 'Cloudflare', 'Tailwind'],
       description: "Full-stack development with modern frameworks"
     },
     {
@@ -23,7 +23,7 @@ const SkillsSection = () => {
       title: "Tools & Platforms",
       icon: "🛠️",
       color: "#F59E0B",
-      skills: ['Git', 'GitHub', 'VSCode', 'Docker', 'Postman'],
+      skills: ['Git', 'GitHub', 'VSCode', 'Docker', 'Postman', 'Figma', 'PostgreSQL'],
       description: "Development tools and version control"
     }
   ];
@@ -143,7 +143,7 @@ const SkillsSection = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  {category.skills.map((skill, skillIndex) => (
+                  {category.skills.map((skill) => (
                     <motion.div
                       key={skill}
                       className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 cursor-pointer transition-all duration-300"
@@ -169,7 +169,13 @@ const SkillsSection = () => {
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >
                         <img
-                          src={`https://skillicons.dev/icons?i=${skill.toLowerCase() === 'c++' ? 'cpp' : skill.toLowerCase() === 'html/css' ? 'html' : skill.toLowerCase()}`}
+                          src={`https://skillicons.dev/icons?i=${
+                            skill.toLowerCase() === 'c++' ? 'cpp' : 
+                            skill.toLowerCase() === 'html/css' ? 'html' : 
+                            skill.toLowerCase() === 'cloudflare' ? 'cloudflare' :
+                            skill.toLowerCase() === 'tailwind' ? 'tailwind' :
+                            skill.toLowerCase()
+                          }`}
                           alt={skill}
                           className="w-8 h-8 md:w-10 md:h-10"
                         />
@@ -182,7 +188,9 @@ const SkillsSection = () => {
                           color: hoveredCategory === categoryIndex ? category.color : undefined 
                         }}
                       >
-                        {skill}
+                        {skill === 'Tailwind' ? 'Tailwind CSS' : 
+                         skill === 'Cloudflare' ? 'Cloudflare Workers' : 
+                         skill}
                       </span>
                     </motion.div>
                   ))}
