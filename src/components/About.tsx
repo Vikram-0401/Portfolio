@@ -33,7 +33,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen py-24 flex items-center bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+    <section id="about" className="min-h-screen py-24 flex items-center bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -146,7 +146,7 @@ const About = () => {
                     {hobbies.map((hobby, index) => (
                       <motion.div
                         key={index}
-                        className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 cursor-pointer transition-all duration-300"
+                        className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer transition-all duration-300"
                         style={{
                           borderColor: hoveredHobby === index ? hobby.color : undefined,
                           backgroundColor: hoveredHobby === index ? `${hobby.color}10` : undefined,

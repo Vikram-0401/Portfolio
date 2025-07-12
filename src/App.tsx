@@ -29,9 +29,32 @@ function App() {
       <main className="min-h-[calc(100vh-80px)]">
         <Routes>
           <Route path="/" element={
-            <section id="home" className="min-h-[calc(100vh-80px)] flex items-center">
-              <Hero />
-            </section>
+            <div className="w-full">
+              {/* Hero Section */}
+              <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center">
+                <Hero />
+              </section>
+              
+              {/* About Section */}
+              <section id="about" className="min-h-screen py-20">
+                <About />
+              </section>
+              
+              {/* Skills Section */}
+              <section id="skills" className="min-h-screen py-20">
+                <Skills />
+              </section>
+              
+              {/* Projects Section */}
+              <section id="projects" className="min-h-screen py-20">
+                <Projects />
+              </section>
+              
+              {/* Contact Section */}
+              <section id="contact" className="min-h-screen py-20">
+                <Contact />
+              </section>
+            </div>
           } />
           <Route path="/about" element={
             <section id="about" className="min-h-[calc(100vh-80px)] pt-20">
@@ -55,7 +78,7 @@ function App() {
           } />
         </Routes>
       </main>
-      <footer className="py-6 text-center text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300">
+      <footer className="py-6 text-center text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
         <p>© {new Date().getFullYear()} Vikram R. All rights reserved.</p>
       </footer>
     </div>

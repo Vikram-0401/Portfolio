@@ -7,7 +7,7 @@ const Contact = () => {
   const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
 
   return (
-    <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <section id="contact" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -234,7 +234,7 @@ const Contact = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-6 rounded-xl flex flex-col items-center justify-center gap-4 border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 relative overflow-hidden group transition-all duration-300 hover:shadow-lg"
+                    className="p-6 rounded-xl flex flex-col items-center justify-center gap-4 border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 relative overflow-hidden group transition-all duration-300 hover:shadow-lg"
                     style={{
                       borderColor: hoveredSocial === index 
                         ? (name === 'GitHub' ? '#F8FAFC' : color)

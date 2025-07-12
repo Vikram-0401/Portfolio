@@ -146,7 +146,7 @@ const SkillsSection = () => {
                   {category.skills.map((skill) => (
                     <motion.div
                       key={skill}
-                      className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 cursor-pointer transition-all duration-300"
+                      className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer transition-all duration-300"
                       style={{
                         borderColor: hoveredCategory === categoryIndex ? `${category.color}40` : undefined,
                         backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
