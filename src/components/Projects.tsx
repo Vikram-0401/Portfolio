@@ -185,8 +185,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 transition-colors duration-300">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -203,14 +203,12 @@ const Projects = () => {
           >
             Featured Projects
           </motion.h2>
-          
           <motion.div
             className="w-32 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto rounded-full mb-6"
             initial={{ width: 0 }}
             whileInView={{ width: 128 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          
           <motion.p
             className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg transition-colors duration-300"
             initial={{ opacity: 0 }}
@@ -220,51 +218,12 @@ const Projects = () => {
             A showcase of my latest work in web development, AI/ML, and innovative solutions
           </motion.p>
         </motion.div>
-        
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {/* Project List - single column */}
+        <div className="flex flex-col gap-10">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
-
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-16 text-center"
-        >
-          <motion.a
-            href="https://github.com/Vikram-0401?tab=repositories"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg font-semibold text-lg relative overflow-hidden group transition-all duration-300"
-            whileHover={{ 
-              scale: 1.02,
-              boxShadow: "0 10px 25px rgba(15, 23, 42, 0.2)",
-            }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="relative z-10 flex items-center">
-              View All Projects
-              <motion.span
-                className="ml-3"
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <Icon name="ArrowRight" className="w-5 h-5" />
-              </motion.span>
-            </span>
-            
-            <motion.div
-              className="absolute inset-0 bg-sky-600"
-              initial={{ x: '-100%' }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

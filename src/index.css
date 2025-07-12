@@ -310,6 +310,10 @@ input:focus-visible {
   }
 }
 
+body, section {
+  background: #fff !important;
+}
+
 .dark body, .dark section {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%) !important;
 }

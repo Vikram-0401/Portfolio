@@ -33,7 +33,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen py-24 flex items-center bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section id="about" className="min-h-screen py-24 flex items-center transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

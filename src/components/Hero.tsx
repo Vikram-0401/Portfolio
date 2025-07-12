@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Icon from './ui/Icon';
 import { FaReact, FaPython, FaDocker, FaGitAlt, FaJs, FaFireAlt } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiNextdotjs, SiPostman, SiLeetcode } from 'react-icons/si';
+import { SiTypescript, SiMongodb, SiNextdotjs, SiLeetcode } from 'react-icons/si';
 import { BsFillLightningFill } from 'react-icons/bs';
 
 // Professional skills data with clean positioning
@@ -23,7 +23,7 @@ const skills = [
 
 const Hero = () => {
   const navigate = useNavigate();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [, setMousePosition] = useState({ x: 0, y: 0 });
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -53,7 +53,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center py-16 md:py-24 relative overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center px-2 sm:px-4 md:px-8 py-8 md:py-0 relative overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-300">
       {/* Clean Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Subtle geometric shapes */}
@@ -122,8 +122,8 @@ const Hero = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
           {/* Content Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -132,7 +132,7 @@ const Hero = () => {
             className="text-center lg:text-left space-y-8 lg:w-1/2"
           >
             <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white space-y-2 transition-colors duration-300"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 dark:text-white space-y-2 transition-colors duration-300"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -175,7 +175,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl lg:mx-0 mx-auto leading-relaxed transition-colors duration-300"
+              className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl lg:mx-0 mx-auto leading-relaxed transition-colors duration-300"
             >
               Passionate about creating innovative solutions and exploring the frontiers of AI & Machine Learning with clean, efficient code.
             </motion.p>
@@ -227,7 +227,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex gap-6 justify-center lg:justify-start"
+              className="flex gap-4 sm:gap-6 justify-center lg:justify-start"
             >
               {[
                 { icon: 'Github', href: 'https://github.com/Vikram-0401' },
@@ -267,7 +267,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="hidden lg:block lg:w-1/2"
           >
-            <div className="relative w-full h-[500px]">
+            <div className="relative w-full h-[350px] md:h-[400px] lg:h-[500px]">
               {/* Clean container */}
               <motion.div
                 className="absolute inset-0 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm transition-colors duration-300"

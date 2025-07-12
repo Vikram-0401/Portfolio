@@ -31,44 +31,44 @@ function App() {
           <Route path="/" element={
             <div className="w-full">
               {/* Hero Section */}
-              <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center bg-[#0d1526]">
+              <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center">
                 <Hero />
               </section>
               {/* About Section */}
-              <section id="about" className="min-h-screen py-20 bg-[#0d1526]">
+              <section id="about" className="min-h-screen py-20">
                 <About />
               </section>
               {/* Skills Section */}
-              <section id="skills" className="min-h-screen py-20 bg-[#0d1526]">
+              <section id="skills" className="min-h-screen py-20">
                 <Skills />
               </section>
               {/* Projects Section */}
-              <section id="projects" className="min-h-screen py-20 bg-[#0d1526]">
+              <section id="projects" className="min-h-screen py-20">
                 <Projects />
               </section>
               {/* Contact Section */}
-              <section id="contact" className="min-h-screen py-20 bg-[#0d1526]">
+              <section id="contact" className="min-h-screen py-20">
                 <Contact />
               </section>
             </div>
           } />
           <Route path="/about" element={
-            <section id="about" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
+            <section id="about" className="min-h-[calc(100vh-80px)] pt-20">
               <About />
             </section>
           } />
           <Route path="/skills" element={
-            <section id="skills" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
+            <section id="skills" className="min-h-[calc(100vh-80px)] pt-20">
               <Skills />
             </section>
           } />
           <Route path="/projects" element={
-            <section id="projects" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
+            <section id="projects" className="min-h-[calc(100vh-80px)] pt-20">
               <Projects />
             </section>
           } />
           <Route path="/contact" element={
-            <section id="contact" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
+            <section id="contact" className="min-h-[calc(100vh-80px)] pt-20">
               <Contact />
             </section>
           } />
