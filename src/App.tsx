@@ -23,7 +23,7 @@ function App() {
   useTheme();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-[#0d1526] text-white overflow-x-hidden transition-colors duration-300">
       <ScrollToTop />
       <Navbar />
       <main className="min-h-[calc(100vh-80px)]">
@@ -31,54 +31,50 @@ function App() {
           <Route path="/" element={
             <div className="w-full">
               {/* Hero Section */}
-              <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center">
+              <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center bg-[#0d1526]">
                 <Hero />
               </section>
-              
               {/* About Section */}
-              <section id="about" className="min-h-screen py-20">
+              <section id="about" className="min-h-screen py-20 bg-[#0d1526]">
                 <About />
               </section>
-              
               {/* Skills Section */}
-              <section id="skills" className="min-h-screen py-20">
+              <section id="skills" className="min-h-screen py-20 bg-[#0d1526]">
                 <Skills />
               </section>
-              
               {/* Projects Section */}
-              <section id="projects" className="min-h-screen py-20">
+              <section id="projects" className="min-h-screen py-20 bg-[#0d1526]">
                 <Projects />
               </section>
-              
               {/* Contact Section */}
-              <section id="contact" className="min-h-screen py-20">
+              <section id="contact" className="min-h-screen py-20 bg-[#0d1526]">
                 <Contact />
               </section>
             </div>
           } />
           <Route path="/about" element={
-            <section id="about" className="min-h-[calc(100vh-80px)] pt-20">
+            <section id="about" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
               <About />
             </section>
           } />
           <Route path="/skills" element={
-            <section id="skills" className="min-h-[calc(100vh-80px)] pt-20">
+            <section id="skills" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
               <Skills />
             </section>
           } />
           <Route path="/projects" element={
-            <section id="projects" className="min-h-[calc(100vh-80px)] pt-20">
+            <section id="projects" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
               <Projects />
             </section>
           } />
           <Route path="/contact" element={
-            <section id="contact" className="min-h-[calc(100vh-80px)] pt-20">
+            <section id="contact" className="min-h-[calc(100vh-80px)] pt-20 bg-[#0d1526]">
               <Contact />
             </section>
           } />
         </Routes>
       </main>
-      <footer className="py-6 text-center text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
+      <footer className="py-6 text-center text-slate-500 border-t border-slate-800 bg-[#0d1526] transition-colors duration-300">
         <p>© {new Date().getFullYear()} Vikram R. All rights reserved.</p>
       </footer>
     </div>
