@@ -317,3 +317,7 @@ body, section {
 .dark body, .dark section {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%) !important;
 }
+
+.dark .nextjs-icon {
+  filter: brightness(2) invert(1) contrast(1.2) !important;
+}

@@ -177,7 +177,7 @@ const SkillsSection = () => {
                             skill.toLowerCase()
                           }`}
                           alt={skill}
-                          className={`w-8 h-8 md:w-10 md:h-10${skill.toLowerCase() === 'next.js' || skill.toLowerCase() === 'nextjs' ? ' dark:invert dark:brightness-200' : ''}`}
+                          className={`w-8 h-8 md:w-10 md:h-10${skill.toLowerCase() === 'next.js' || skill.toLowerCase() === 'nextjs' ? ' nextjs-icon' : ''}`}
                         />
                       </motion.div>
                       
