@@ -32,8 +32,8 @@ function App() {
             <div className="w-full">
               {/* Hero Section */}
               <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center">
-                <Hero />
-              </section>
+              <Hero />
+            </section>
               {/* About Section */}
               <section id="about" className="min-h-screen py-20">
                 <About />

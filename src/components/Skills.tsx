@@ -183,10 +183,8 @@ const SkillsSection = () => {
                       
                       {/* Skill Name */}
                       <span 
-                        className="text-sm md:text-base font-medium text-center block transition-colors duration-300"
-                        style={{ 
-                          color: hoveredCategory === categoryIndex ? category.color : undefined 
-                        }}
+                        className={`text-sm md:text-base font-medium text-center block transition-colors duration-300 text-slate-900 dark:text-slate-200 ${hoveredCategory === categoryIndex ? '' : ''}`}
+                        style={{ color: hoveredCategory === categoryIndex ? category.color : undefined }}
                       >
                         {skill === 'Tailwind' ? 'Tailwind CSS' : 
                          skill === 'Cloudflare' ? 'Cloudflare Workers' : 

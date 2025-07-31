@@ -99,15 +99,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {/* Title */}
           <motion.h3 
             className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300"
-            style={{
-              color: isHovered ? project.color : undefined,
-            }}
+            style={{ color: isHovered ? project.color : '' }}
           >
             {project.title}
           </motion.h3>
           
           {/* Description */}
-          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-grow transition-colors duration-300">
+          <p className="text-slate-700 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-grow transition-colors duration-300">
             {project.description}
           </p>
           
@@ -117,11 +115,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               {project.tech.map((tech, techIndex) => (
                 <motion.span
                   key={tech}
-                  className="px-3 py-1 rounded-full text-xs font-medium border transition-all duration-300"
+                  className="px-3 py-1 rounded-full text-xs font-medium border border-slate-300 text-slate-700 bg-white dark:border-slate-700 dark:text-slate-200 dark:bg-slate-800 transition-all duration-300"
                   style={{
-                    backgroundColor: isHovered ? `${project.color}10` : undefined,
-                    borderColor: isHovered ? `${project.color}40` : undefined,
-                    color: isHovered ? project.color : undefined,
+                    backgroundColor: isHovered ? `${project.color}10` : '',
+                    borderColor: isHovered ? `${project.color}40` : '',
+                    color: isHovered ? project.color : '',
                   }}
                   whileHover={{ 
                     scale: 1.05,
@@ -143,8 +141,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center p-3 rounded-xl border-2 transition-all duration-300 bg-white dark:bg-slate-800"
                 style={{
-                  borderColor: isHovered ? project.color : undefined,
-                  color: isHovered ? project.color : undefined,
+                  borderColor: isHovered ? project.color : '',
+                  color: isHovered ? project.color : '',
                 }}
                 whileHover={{ 
                   scale: 1.05,
@@ -153,7 +151,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 whileTap={{ scale: 0.95 }}
                 aria-label={`View ${project.title} on GitHub`}
               >
-                <Icon name="Github" className="w-5 h-5" />
+                <Icon name="Github" className="w-5 h-5 text-zinc-900 dark:text-white" />
               </motion.a>
               
               <motion.a

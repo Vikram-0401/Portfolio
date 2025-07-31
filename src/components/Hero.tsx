@@ -53,7 +53,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center px-2 sm:px-4 md:px-8 py-8 md:py-0 relative overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center px-2 sm:px-4 md:px-8 py-8 md:py-0 relative overflow-hidden transition-colors duration-300">
       {/* Clean Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Subtle geometric shapes */}
