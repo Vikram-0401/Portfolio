@@ -9,7 +9,7 @@ const SkillsSection = () => {
       title: "Development",
       icon: "⚡",
       color: "#0EA5E9",
-      skills: ['React', 'MongoDB', 'Express', 'TypeScript', 'Firebase', 'Prisma', 'Cloudflare', 'Tailwind'],
+      skills: ['React', 'Next', 'MongoDB', 'Express', 'TypeScript', 'Firebase', 'PostgreSQL', 'Prisma', 'Cloudflare', 'Tailwind', 'WebSocket'],
       description: "Full-stack development with modern frameworks"
     },
     {
@@ -23,7 +23,7 @@ const SkillsSection = () => {
       title: "Tools & Platforms",
       icon: "🛠️",
       color: "#F59E0B",
-      skills: ['Git', 'GitHub', 'VSCode', 'Docker', 'Postman', 'Figma', 'PostgreSQL'],
+      skills: ['Git', 'GitHub', 'VSCode', 'Docker', 'Postman', 'Figma'],
       description: "Development tools and version control"
     }
   ];
@@ -168,17 +168,25 @@ const SkillsSection = () => {
                         className="flex items-center justify-center mb-3"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >
-                        <img
-                          src={`https://skillicons.dev/icons?i=${
-                            skill.toLowerCase() === 'c++' ? 'cpp' : 
-                            skill.toLowerCase() === 'html/css' ? 'html' : 
-                            skill.toLowerCase() === 'cloudflare' ? 'cloudflare' :
-                            skill.toLowerCase() === 'tailwind' ? 'tailwind' :
-                            skill.toLowerCase()
-                          }`}
-                          alt={skill}
-                          className={`w-8 h-8 md:w-10 md:h-10${skill.toLowerCase() === 'next.js' || skill.toLowerCase() === 'nextjs' ? ' nextjs-icon' : ''}`}
-                        />
+                        {skill === 'WebSocket' ? (
+                          <img
+                            src="/images/websockets.svg"
+                            alt={skill}
+                            className="w-8 h-8 md:w-10 md:h-10"
+                          />
+                        ) : (
+                          <img
+                            src={`https://skillicons.dev/icons?i=${
+                              skill.toLowerCase() === 'c++' ? 'cpp' : 
+                              skill.toLowerCase() === 'html/css' ? 'html' : 
+                              skill.toLowerCase() === 'cloudflare' ? 'cloudflare' :
+                              skill.toLowerCase() === 'tailwind' ? 'tailwind' :
+                              skill.toLowerCase()
+                            }`}
+                            alt={skill}
+                            className={`w-8 h-8 md:w-10 md:h-10${skill.toLowerCase() === 'next.js' || skill.toLowerCase() === 'nextjs' ? ' nextjs-icon' : ''}`}
+                          />
+                        )}
                       </motion.div>
                       
                       {/* Skill Name */}
