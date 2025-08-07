@@ -142,13 +142,13 @@ const Navbar = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="mobile-menu md:hidden mobile-menu-container overflow-hidden"
+            className="mobile-menu md:hidden mobile-menu-container"
           >
-            <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 transition-colors duration-300">
+            <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 transition-colors duration-300 max-h-[80vh] overflow-y-auto">
               {navItems.map(({ name, path, icon }) => (
                 <motion.div key={name} whileTap={{ scale: 0.98 }}>
                   <Link
