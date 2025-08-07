@@ -9,7 +9,7 @@ const SkillsSection = () => {
       title: "Development",
       icon: "⚡",
       color: "#0EA5E9",
-      skills: ['React', 'Next', 'MongoDB', 'Express', 'TypeScript', 'Firebase', 'PostgreSQL','Prisma', 'Cloudflare', 'Tailwind', 'WebSocket'],
+      skills: ['React', 'Next', 'MongoDB', 'Express', 'Hono','TypeScript', 'Firebase', 'PostgreSQL', 'Prisma', 'Cloudflare', 'Tailwind', 'WebSocket'],
       description: "Full-stack development with modern frameworks"
     },
     {
@@ -171,6 +171,12 @@ const SkillsSection = () => {
                         {skill === 'WebSocket' ? (
                           <img
                             src="/images/websockets.svg"
+                            alt={skill}
+                            className="w-8 h-8 md:w-10 md:h-10"
+                          />
+                        ) : skill === 'Hono' ? (
+                          <img
+                            src="/images/Hono.svg"
                             alt={skill}
                             className="w-8 h-8 md:w-10 md:h-10"
                           />
