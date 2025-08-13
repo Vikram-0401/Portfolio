@@ -16,7 +16,7 @@ const SkillsSection = () => {
       title: "Languages",
       icon: "💻",
       color: "#059669",
-      skills: ['C++', 'C', 'JavaScript', 'HTML/CSS'],
+      skills: ['C++', 'C', 'Python', 'JavaScript', 'HTML/CSS'],
       description: "Programming languages and markup technologies"
     },
     {
