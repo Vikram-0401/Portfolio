@@ -20,6 +20,13 @@ const SkillsSection = () => {
       description: "Programming languages and markup technologies"
     },
     {
+      title: "Aiml",
+      icon: "🧠",
+      color: "#8B5CF6",
+      skills: ['Python', 'NumPy', 'Pandas'],
+      description: "Artificial Intelligence and Machine Learning"
+    },
+    {
       title: "Tools & Platforms",
       icon: "🛠️",
       color: "#F59E0B",
