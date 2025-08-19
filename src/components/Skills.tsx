@@ -16,7 +16,7 @@ const SkillsSection = () => {
       title: "Languages",
       icon: "💻",
       color: "#059669",
-      skills: ['C++', 'C', 'Python', 'JavaScript', 'HTML/CSS'],
+      skills: ['C++', 'C', 'JavaScript', 'HTML/CSS'],
       description: "Programming languages and markup technologies"
     },
     {
@@ -125,7 +125,7 @@ const SkillsSection = () => {
                     <motion.h3 
                       className="text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300"
                       style={{ 
-                        color: hoveredCategory === categoryIndex ? category.color : undefined 
+                        color: category.color
                       }}
                     >
                       {category.title}
@@ -187,6 +187,18 @@ const SkillsSection = () => {
                             alt={skill}
                             className="w-8 h-8 md:w-10 md:h-10"
                           />
+                        ) : skill === 'NumPy' ? (
+                          <img
+                            src="/images/numpy.png"
+                            alt={skill}
+                            className="w-8 h-8 md:w-10 md:h-10"
+                          />
+                        ) : skill === 'Pandas' ? (
+                          <img
+                            src="/images/pandas.png"
+                            alt={skill}
+                            className="w-8 h-8 md:w-10 md:h-10"
+                          />
                         ) : (
                           <img
                             src={`https://skillicons.dev/icons?i=${
@@ -205,7 +217,7 @@ const SkillsSection = () => {
                       {/* Skill Name */}
                       <span 
                         className={`text-sm md:text-base font-medium text-center block transition-colors duration-300 text-slate-900 dark:text-slate-200 ${hoveredCategory === categoryIndex ? '' : ''}`}
-                        style={{ color: hoveredCategory === categoryIndex ? category.color : undefined }}
+                        style={{ color: category.color }}
                       >
                         {skill === 'Tailwind' ? 'Tailwind CSS' : 
                          skill === 'Cloudflare' ? 'Cloudflare Workers' : 
