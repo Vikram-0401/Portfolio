@@ -13,6 +13,15 @@ const projects = [
     color: '#0EA5E9'
   },
   {
+    title: 'Crop Disease Detection',
+    description: 'AI-powered system to detect crop diseases from leaf images, providing quick diagnosis to assist farmers in early intervention.',
+    image: '/images/crop_disease_detection.png',
+    tech: ['Python', 'TensorFlow', 'Keras', 'NumPy', 'Pandas', 'OpenCV'],
+    github: 'https://github.com/Vikram-0401/Crop_disease_detection',
+    demo: 'https://krishikavacha.streamlit.app/',
+    color: '#16A34A'
+  },
+  {
     title: 'HiveMind',
     description: 'Modern blogging platform with clean interface. Serverless architecture for optimal performance.',
     image: '/images/HiveMind.png',
