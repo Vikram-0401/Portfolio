@@ -46,7 +46,8 @@ const projects = [
     tech: ['Next.js', 'TypeScript', 'Postgree', 'OpenAI', 'Shadcn UI'],
     github: 'https://github.com/Vikram-0401/Ai-Mock_Interviewer.git',
     demo: 'https://github.com/Vikram-0401/Ai-Mock_Interviewer.git',
-    color: '#374151'
+    color: '#374151',
+    accentColor: '#8B5CF6'
   }
 ];
 
@@ -59,6 +60,7 @@ interface ProjectCardProps {
     github: string;
     demo: string;
     color: string;
+    accentColor?: string;
   };
   index: number;
 }
@@ -108,7 +110,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {/* Title */}
           <motion.h3 
             className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300"
-            style={{ color: isHovered ? project.color : '' }}
+            style={{ color: isHovered ? (project.accentColor || project.color) : '' }}
           >
             {project.title}
           </motion.h3>
@@ -126,9 +128,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                   key={tech}
                   className="px-3 py-1 rounded-full text-xs font-medium border border-slate-300 text-slate-700 bg-white dark:border-slate-700 dark:text-slate-200 dark:bg-slate-800 transition-all duration-300"
                   style={{
-                    backgroundColor: isHovered ? `${project.color}10` : '',
-                    borderColor: isHovered ? `${project.color}40` : '',
-                    color: isHovered ? project.color : '',
+                    backgroundColor: isHovered ? `${(project.accentColor || project.color)}10` : '',
+                    borderColor: isHovered ? `${(project.accentColor || project.color)}40` : '',
+                    color: isHovered ? (project.accentColor || project.color) : '',
                   }}
                   whileHover={{ 
                     scale: 1.05,
@@ -150,8 +152,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center p-3 rounded-xl border-2 transition-all duration-300 bg-white dark:bg-slate-800"
                 style={{
-                  borderColor: isHovered ? project.color : '',
-                  color: isHovered ? project.color : '',
+                  borderColor: isHovered ? (project.accentColor || project.color) : '',
+                  color: isHovered ? (project.accentColor || project.color) : '',
                 }}
                 whileHover={{ 
                   scale: 1.05,
@@ -162,17 +164,17 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               >
                 <Icon name="Github" className="w-5 h-5 text-zinc-900 dark:text-white" />
               </motion.a>
-              {/* Only show Go Live/demo button for Modernizing Laboratory Assessment */}
-              {project.title === 'Modernizing Laboratory Assessment' && (
+              {/* Show Go Live/demo button when a demo URL is provided */}
+              {project.demo && (
                 <motion.a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center p-3 rounded-xl border-2 transition-all duration-300"
                   style={{
-                    borderColor: project.color,
-                    backgroundColor: isHovered ? project.color : 'transparent',
-                    color: isHovered ? 'white' : project.color,
+                    borderColor: (project.accentColor || project.color),
+                    backgroundColor: isHovered ? (project.accentColor || project.color) : 'transparent',
+                    color: isHovered ? 'white' : (project.accentColor || project.color),
                   }}
                   whileHover={{ 
                     scale: 1.05,
