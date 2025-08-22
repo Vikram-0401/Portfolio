@@ -203,7 +203,7 @@ const Contact = () => {
                   { 
                     icon: 'Linkedin', 
                     name: 'LinkedIn',
-                    href: 'https://www.linkedin.com/in/vikram-shetty-6827b3259/', 
+                    href: 'https://www.linkedin.com/in/vikram-r-6827b3259/', 
                     color: '#0EA5E9',
                     darkColor: '#0EA5E9',
                     bgLight: '#EFF6FF',
