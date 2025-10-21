@@ -7,29 +7,25 @@ const SkillsSection = () => {
   const skillCategories = [
     {
       title: "Development",
-      icon: "⚡",
-      color: "#0EA5E9",
+      color: "#ffffff",
       skills: ['React', 'Next', 'MongoDB', 'Express', 'Hono','TypeScript', 'Firebase', 'PostgreSQL', 'Prisma', 'Cloudflare', 'Tailwind', 'WebSocket'],
       description: "Full-stack development with modern frameworks"
     },
     {
       title: "Languages",
-      icon: "💻",
-      color: "#059669",
+      color: "#e5e5e5",
       skills: ['C++', 'C', 'JavaScript', 'HTML/CSS'],
       description: "Programming languages and markup technologies"
     },
     {
       title: "Aiml",
-      icon: "🧠",
-      color: "#8B5CF6",
+      color: "#d4d4d4",
       skills: ['Python', 'NumPy', 'Pandas'],
       description: "Artificial Intelligence and Machine Learning"
     },
     {
       title: "Tools & Platforms",
-      icon: "🛠️",
-      color: "#F59E0B",
+      color: "#a3a3a3",
       skills: ['Git', 'GitHub', 'VSCode', 'Docker', 'Postman', 'Figma'],
       description: "Development tools and version control"
     }
@@ -47,7 +43,7 @@ const SkillsSection = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300"
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -57,7 +53,7 @@ const SkillsSection = () => {
           </motion.h2>
           
           <motion.div
-            className="w-32 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto rounded-full mb-6"
+            className="w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full mb-6"
             initial={{ width: 0 }}
             whileInView={{ width: 128 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -86,7 +82,7 @@ const SkillsSection = () => {
             >
               {/* Category Card */}
               <motion.div
-                className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-700 transition-all duration-300"
+                className="rounded-2xl p-8 shadow-xl border transition-all duration-300 bg-black/40 border-white/15 backdrop-blur-md"
                 style={{
                   borderColor: hoveredCategory === categoryIndex ? category.color : undefined,
                   boxShadow: hoveredCategory === categoryIndex 
@@ -108,7 +104,7 @@ const SkillsSection = () => {
                   transition={{ delay: 0.2 + categoryIndex * 0.1 }}
                 >
                   <motion.div
-                    className="text-4xl p-3 rounded-xl border-2 bg-white dark:bg-slate-700 transition-all duration-300"
+                    className="text-4xl p-3 rounded-xl border bg-black/50 transition-all duration-300"
                     style={{ 
                       borderColor: category.color,
                       backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
@@ -130,7 +126,7 @@ const SkillsSection = () => {
                     >
                       {category.title}
                     </motion.h3>
-                    <p className="text-slate-600 dark:text-slate-400 transition-colors duration-300">
+                    <p className="text-slate-300 transition-colors duration-300">
                       {category.description}
                     </p>
                   </div>
@@ -153,7 +149,7 @@ const SkillsSection = () => {
                   {category.skills.map((skill) => (
                     <motion.div
                       key={skill}
-                      className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer transition-all duration-300"
+                      className="group relative p-4 rounded-xl border bg-black/30 border-white/10 cursor-pointer transition-all duration-300"
                       style={{
                         borderColor: hoveredCategory === categoryIndex ? `${category.color}40` : undefined,
                         backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
@@ -166,7 +162,7 @@ const SkillsSection = () => {
                         y: -4,
                         scale: 1.02,
                         borderColor: category.color,
-                        backgroundColor: `${category.color}20`,
+                        backgroundColor: `${category.color}15`,
                         boxShadow: `0 8px 20px ${category.color}20`,
                       }}
                     >
@@ -180,24 +176,40 @@ const SkillsSection = () => {
                             src="/images/websockets.svg"
                             alt={skill}
                             className="w-8 h-8 md:w-10 md:h-10"
+                            style={{ 
+                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
+                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
+                            }}
                           />
                         ) : skill === 'Hono' ? (
                           <img
                             src="/images/Hono.svg"
                             alt={skill}
                             className="w-8 h-8 md:w-10 md:h-10"
+                            style={{ 
+                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
+                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
+                            }}
                           />
                         ) : skill === 'NumPy' ? (
                           <img
                             src="/images/numpy.png"
                             alt={skill}
                             className="w-8 h-8 md:w-10 md:h-10"
+                            style={{ 
+                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
+                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
+                            }}
                           />
                         ) : skill === 'Pandas' ? (
                           <img
                             src="/images/pandas.png"
                             alt={skill}
                             className="w-8 h-8 md:w-10 md:h-10"
+                            style={{ 
+                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
+                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
+                            }}
                           />
                         ) : (
                           <img
@@ -210,14 +222,18 @@ const SkillsSection = () => {
                             }`}
                             alt={skill}
                             className={`w-8 h-8 md:w-10 md:h-10${skill.toLowerCase() === 'next.js' || skill.toLowerCase() === 'nextjs' ? ' nextjs-icon' : ''}`}
+                            style={{ 
+                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
+                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
+                            }}
                           />
                         )}
                       </motion.div>
                       
                       {/* Skill Name */}
                       <span 
-                        className={`text-sm md:text-base font-medium text-center block transition-colors duration-300 text-slate-900 dark:text-slate-200 ${hoveredCategory === categoryIndex ? '' : ''}`}
-                        style={{ color: category.color }}
+                        className={`text-sm md:text-base font-medium text-center block transition-colors duration-300 text-slate-200`}
+                        style={{ color: hoveredCategory === categoryIndex ? category.color : undefined }}
                       >
                         {skill === 'Tailwind' ? 'Tailwind CSS' : 
                          skill === 'Cloudflare' ? 'Cloudflare Workers' : 

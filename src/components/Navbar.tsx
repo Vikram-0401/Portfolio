@@ -2,23 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from './ui/Icon';
-import ThemeToggle from './ui/ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
-  const backgroundOpacity = useTransform(
-    scrollY,
-    [0, 100],
-    [0, 0.95]
-  );
-  
-  const shadowOpacity = useTransform(
-    scrollY,
-    [0, 100],
-    [0, 0.1]
-  );
+  const backgroundOpacity = useTransform(scrollY, [0, 100], [0, 0.85]);
+  const shadowOpacity = useTransform(scrollY, [0, 100], [0, 0.15]);
 
   const navItems = [
     { name: 'Home', path: '/', icon: 'Home' },
@@ -29,42 +19,24 @@ const Navbar = () => {
   ];
 
   const isActive = (path: string) => {
-    if (path === '/') {
-      return location.pathname === path;
-    }
+    if (path === '/') return location.pathname === path;
     return location.pathname.startsWith(path);
   };
 
-  
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (isMenuOpen && !target.closest('.mobile-menu-container')) {
-        setIsMenuOpen(false);
-      }
-    };
-    
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
-  
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-    
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [isMenuOpen]);
 
   return (
     <motion.nav
       className="fixed w-full z-50 py-4 transition-all duration-300"
       style={{
-        background: `rgba(var(--background-start-rgb), ${backgroundOpacity.get()})`,
+        background: `rgba(0,0,0,${backgroundOpacity.get()})`,
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
         boxShadow: `0 4px 30px rgba(0, 0, 0, ${shadowOpacity.get()})`,
@@ -73,18 +45,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between">
           <div className="relative flex items-center justify-between w-full px-4 sm:px-6 py-2.5">
-            <motion.div
-              className="flex items-center"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Link to="/" className="text-xl font-bold bg-gradient-to-r from-sky-600 to-emerald-600 bg-clip-text text-transparent flex items-center">
+            <motion.div className="flex items-center" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Link to="/" className="text-xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent flex items-center">
                 Vikram <span className="hidden sm:inline font-semibold">&nbsp;R</span>
               </Link>
             </motion.div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
               <div className="flex items-center space-x-2 lg:space-x-3">
                 {navItems.map(({ name, path, icon }) => (
                   <motion.div key={name} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
@@ -92,8 +59,8 @@ const Navbar = () => {
                       to={path}
                       className={`relative flex items-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 ${
                         isActive(path)
-                          ? 'text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 border-b-2 border-sky-500' 
-                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border-b-2 border-transparent hover:bg-slate-50 dark:hover:bg-slate-800'
+                          ? 'text-white bg-white/10 border-b-2 border-white'
+                          : 'text-slate-300 hover:text-white border-b-2 border-transparent hover:bg-white/5'
                       }`}
                     >
                       <Icon name={icon as any} className="w-4 h-4" />
@@ -102,43 +69,35 @@ const Navbar = () => {
                   </motion.div>
                 ))}
               </div>
+              
+              {/* Resume Button */}
+              <motion.div whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
+                <a
+                  href="https://drive.google.com/file/d/1OhUq_LDYs4hYyOWbfQTfUPJR4EMZHAjj/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:from-gray-600 hover:to-gray-400 border border-white/20 hover:border-white/40"
+                >
+                  <Icon name="Download" className="w-4 h-4" />
+                  <span>Resume</span>
+                </a>
+              </motion.div>
             </div>
 
-            {/* Theme Toggle & Mobile Menu */}
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              
-              <div className="flex items-center gap-2 md:hidden mobile-menu-container">
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsMenuOpen(!isMenuOpen);
-                  }}
-                  className="text-slate-600 dark:text-slate-400 p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-300"
-                  aria-label="Toggle mobile menu"
-                >
-                  {isMenuOpen ? <Icon name="X" className="w-5 h-5" /> : <Icon name="Menu" className="w-5 h-5" />}
-                </motion.button>
-              </div>
-
-              <motion.a
-                href="https://drive.google.com/file/d/1VrMO42repA_DyURy6mF8tdw0aGOPsq-h/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:flex items-center px-5 py-2 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm hover:bg-slate-800 dark:hover:bg-slate-100 transition-all duration-300 border shadow-md"
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
+            <div className="flex items-center gap-2 md:hidden mobile-menu-container">
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => { e.stopPropagation(); setIsMenuOpen(!isMenuOpen); }}
+                className="text-slate-300 p-2.5 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300"
+                aria-label="Toggle mobile menu"
               >
-                <Icon name="Download" className="w-4 h-4 mr-2" />
-                Resume
-              </motion.a>
+                <Icon name={isMenuOpen ? 'X' : 'Menu'} className="w-5 h-5" />
+              </motion.button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -148,39 +107,45 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="mobile-menu md:hidden mobile-menu-container"
           >
-            <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 transition-colors duration-300 max-h-[80vh] overflow-y-auto">
+            <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-black/80 backdrop-blur-lg shadow-lg border border-white/20 max-h-[80vh] overflow-y-auto">
               {navItems.map(({ name, path, icon }) => (
                 <motion.div key={name} whileTap={{ scale: 0.98 }}>
                   <Link
                     to={path}
                     className={`flex items-center justify-between px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       isActive(path)
-                        ? 'text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-700 border-l-2 border-sky-500'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-700 border-l-2 border-transparent'
+                        ? 'text-white bg-white/10 border-l-2 border-white'
+                        : 'text-slate-300 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <div className="flex items-center space-x-3">
-                      <Icon name={icon as any} className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                      <Icon name={icon as any} className="w-4 h-4 text-white" />
                       <span>{name}</span>
                     </div>
                     {isActive(path) && (
-                      <Icon name="ArrowRight" className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+                      <Icon name="ArrowRight" className="w-3.5 h-3.5 text-white" />
                     )}
                   </Link>
                 </motion.div>
               ))}
-              <motion.a
-                href="https://drive.google.com/file/d/1VrMO42repA_DyURy6mF8tdw0aGOPsq-h/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 mt-4 px-5 py-3 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm shadow-md transition-colors duration-300"
-                whileTap={{ scale: 0.98 }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Icon name="Download" className="w-4 h-4" />
-                Download Resume
-              </motion.a>
+              
+              {/* Resume Button for Mobile */}
+              <motion.div whileTap={{ scale: 0.98 }}>
+                <a
+                  href="https://drive.google.com/file/d/1OhUq_LDYs4hYyOWbfQTfUPJR4EMZHAjj/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:from-gray-600 hover:to-gray-400 border border-white/20 hover:border-white/40"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <div className="flex items-center space-x-3">
+                    <Icon name="Download" className="w-4 h-4 text-white" />
+                    <span>Resume</span>
+                  </div>
+                  <Icon name="ExternalLink" className="w-3.5 h-3.5 text-white" />
+                </a>
+              </motion.div>
             </div>
           </motion.div>
         )}

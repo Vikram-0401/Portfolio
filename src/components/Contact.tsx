@@ -4,10 +4,37 @@ import Icon from './ui/Icon';
 import { SiLeetcode } from 'react-icons/si';
 
 const Contact = () => {
-  const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const socialLinks = [
+    { icon: 'Github', href: 'https://github.com/Vikram-0401', label: 'GitHub' },
+    { icon: 'Linkedin', href: 'https://www.linkedin.com/in/vikram-r-6827b3259/', label: 'LinkedIn' },
+    { icon: 'Twitter', href: 'https://x.com/VikramS87249739?mx=2', label: 'Twitter' },
+    { icon: 'custom', customIcon: <SiLeetcode className="w-6 h-6" />, href: 'https://leetcode.com/u/Vikram0401/', label: 'LeetCode' },
+    { icon: 'Mail', href: 'mailto:vikramr0401@gmail.com', label: 'Email' }
+  ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+  };
 
   return (
-    <section id="contact" className="min-h-screen py-24 transition-colors duration-300">
+    <section id="contact" className="min-h-screen py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -18,7 +45,7 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300"
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -28,14 +55,14 @@ const Contact = () => {
           </motion.h2>
           
           <motion.div
-            className="w-32 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 mx-auto rounded-full mb-6"
+            className="w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full mb-6"
             initial={{ width: 0 }}
             whileInView={{ width: 128 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
           
           <motion.p 
-            className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg leading-relaxed transition-colors duration-300"
+            className="text-slate-300 max-w-2xl mx-auto text-lg leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -48,292 +75,174 @@ const Contact = () => {
         <div className="flex flex-col lg:flex-row items-stretch gap-12">
           {/* Contact Information Card */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+            className="lg:w-1/2"
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-3/5"
+            viewport={{ once: true }}
           >
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 lg:p-12 shadow-lg border border-slate-200 dark:border-slate-700 h-full transition-colors duration-300">
-              <div className="space-y-8">
-                {/* Contact Methods */}
+            <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl h-full">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Let's Connect
+              </h3>
+              
                 <div className="space-y-6">
-                  <motion.div 
-                    className="flex items-start space-x-6 group"
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <motion.div 
-                      className="w-14 h-14 bg-sky-100 dark:bg-sky-900/50 rounded-xl flex items-center justify-center border border-sky-200 dark:border-sky-700 flex-shrink-0 transition-colors duration-300"
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: '#0EA5E9',
-                        borderColor: '#0EA5E9',
-                      }}
-                      transition={{ duration: 0.2 }}
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-gray-600 to-gray-400 flex items-center justify-center">
+                    <Icon name="Mail" className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-slate-400 text-sm">Email</p>
+                    <a 
+                      href="mailto:vikramr0401@gmail.com" 
+                      className="text-white hover:text-gray-300 transition-colors duration-300"
                     >
-                      <Icon name="Mail" className="w-6 h-6 text-sky-600 dark:text-sky-400 group-hover:text-white transition-colors duration-200" />
-                    </motion.div>
-                    <div className="min-w-0">
-                      <h3 className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2 transition-colors duration-300">
-                        Email
-                      </h3>
-                      <motion.a
-                        href="mailto:vikramshettyr4@gmail.com"
-                        className="text-slate-900 dark:text-white text-xl hover:text-sky-600 dark:hover:text-sky-400 flex items-center gap-2 transition-colors duration-300"
-                        whileHover={{ scale: 1.02 }}
-                      >
-                        vikramshettyr4@gmail.com
-                        <motion.div
-                          initial={{ opacity: 0, x: -5 }}
-                          whileHover={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <Icon name="ArrowRight" className="w-4 h-4 flex-shrink-0" />
-                        </motion.div>
-                      </motion.a>
+                      vikramr0401@gmail.com
+                    </a>
+                  </div>
                     </div>
-                  </motion.div>
-        
-                  <motion.div 
-                    className="flex items-start space-x-6 group"
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <motion.div 
-                      className="w-14 h-14 bg-emerald-100 dark:bg-emerald-900/50 rounded-xl flex items-center justify-center border border-emerald-200 dark:border-emerald-700 flex-shrink-0 transition-colors duration-300"
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: '#059669',
-                        borderColor: '#059669',
-                      }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Icon name="MessageSquare" className="w-6 h-6 text-emerald-600 dark:text-emerald-400 group-hover:text-white transition-colors duration-200" />
-                    </motion.div>
-                    <div className="min-w-0">
-                      <h3 className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2 transition-colors duration-300">
-                        Let's chat
-                      </h3>
-                      <p className="text-slate-900 dark:text-white text-xl transition-colors duration-300">
-                        I'm available for freelance projects and full-time positions.
-                      </p>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-gray-700 to-gray-500 flex items-center justify-center">
+                    <Icon name="MapPin" className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-slate-400 text-sm">Location</p>
+                    <p className="text-slate-300">Tumkur, Karnataka, India</p>
+                  </div>
                     </div>
-                  </motion.div>
-
-                  <motion.div 
-                    className="flex items-start space-x-6 group"
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <motion.div 
-                      className="w-14 h-14 bg-amber-100 dark:bg-amber-900/50 rounded-xl flex items-center justify-center border border-amber-200 dark:border-amber-700 flex-shrink-0 transition-colors duration-300"
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: '#F59E0B',
-                        borderColor: '#F59E0B',
-                      }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Icon name="MapPin" className="w-6 h-6 text-amber-600 dark:text-amber-400 group-hover:text-white transition-colors duration-200" />
-                    </motion.div>
-                    <div className="min-w-0">
-                      <h3 className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2 transition-colors duration-300">
-                        Location
-                      </h3>
-                      <p className="text-slate-900 dark:text-white text-xl transition-colors duration-300">
-                        Bengaluru, Karnataka, India
-                      </p>
-                    </div>
-                  </motion.div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-gray-800 to-gray-600 flex items-center justify-center">
+                    <Icon name="Clock" className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-slate-400 text-sm">Response Time</p>
+                    <p className="text-slate-300">Usually within 24 hours</p>
+                  </div>
                 </div>
-                  
-                {/* Contact Button */}
-                <motion.button
-                  onClick={() => window.location.href = 'mailto:vikramshettyr4@gmail.com'}
-                  className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl transition-all text-center font-semibold shadow-lg text-lg relative overflow-hidden group duration-300"
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 10px 25px rgba(15, 23, 42, 0.2)",
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span className="relative z-10">Send me an email</span>
-                  
-                  <motion.div
-                    className="absolute inset-0 bg-sky-600"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.button>
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-8">
+                <h4 className="text-lg font-semibold text-white mb-4">
+                  Follow Me
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {socialLinks.map((social, index) => (
+                    <motion.a
+                      key={social.href}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg border border-white/20 text-slate-300 bg-black/30 transition-all duration-300 hover:border-white/40 hover:text-white"
+                      whileHover={{ 
+                        scale: 1.05,
+                        y: -2,
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 * index }}
+                    >
+                      {social.icon === 'custom' ? social.customIcon : <Icon name={social.icon as any} className="w-4 h-4" />}
+                      <span className="text-sm font-medium">{social.label}</span>
+                    </motion.a>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
           
-          {/* Social Connections Card */}
+          {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            className="lg:w-1/2"
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full lg:w-2/5"
           >
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 lg:p-10 shadow-lg border border-slate-200 dark:border-slate-700 h-full flex flex-col transition-colors duration-300">
-              <motion.h3 
-                className="text-2xl font-bold text-slate-900 dark:text-white mb-8 transition-colors duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                Connect with me
-              </motion.h3>
+            <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-xl h-full">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Send a Message
+              </h3>
               
-              <div className="grid grid-cols-2 gap-4 flex-grow">
-                {[
-                  { 
-                    icon: 'Github', 
-                    name: 'GitHub',
-                    href: 'https://github.com/Vikram-0401', 
-                    color: '#6B7280',
-                    darkColor: '#F8FAFC', // Light color for dark mode
-                    bgLight: '#F8FAFC',
-                    bgDark: '#374151',
-                  },
-                  { 
-                    icon: 'Linkedin', 
-                    name: 'LinkedIn',
-                    href: 'https://www.linkedin.com/in/vikram-r-6827b3259/', 
-                    color: '#0EA5E9',
-                    darkColor: '#0EA5E9',
-                    bgLight: '#EFF6FF',
-                    bgDark: '#1E3A8A',
-                  },
-                  { 
-                    icon: 'Twitter', 
-                    name: 'Twitter',
-                    href: 'https://x.com/VikramS87249739?mx=2', 
-                    color: '#0EA5E9',
-                    darkColor: '#0EA5E9',
-                    bgLight: '#EFF6FF',
-                    bgDark: '#1E3A8A',
-                  },
-                  { 
-                    icon: 'custom', 
-                    customIcon: <SiLeetcode className="w-6 h-6" />,
-                    name: 'LeetCode',
-                    href: 'https://leetcode.com/u/Vikram0401/', 
-                    color: '#F59E0B',
-                    darkColor: '#F59E0B',
-                    bgLight: '#FFFBEB',
-                    bgDark: '#92400E',
-                  }
-                ].map(({ icon, customIcon, name, href, color, darkColor, bgLight, bgDark }, index) => (
-                  <motion.a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-6 rounded-xl flex flex-col items-center justify-center gap-4 border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 relative overflow-hidden group transition-all duration-300 hover:shadow-lg"
-                    style={{
-                      borderColor: hoveredSocial === index 
-                        ? (name === 'GitHub' ? '#F8FAFC' : color)
-                        : undefined,
-                      backgroundColor: hoveredSocial === index 
-                        ? (name === 'GitHub' 
-                          ? 'rgba(248, 250, 252, 0.1)' 
-                          : `${color}10`) 
-                        : undefined,
-                    }}
-                    whileHover={{ 
-                      y: -4,
-                      scale: 1.02,
-                      boxShadow: name === 'GitHub' 
-                        ? '0 10px 25px rgba(248, 250, 252, 0.1)' 
-                        : `0 10px 25px ${color}20`,
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    onHoverStart={() => setHoveredSocial(index)}
-                    onHoverEnd={() => setHoveredSocial(null)}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    <motion.div 
-                      className="p-3 rounded-xl border-2 transition-all duration-300"
-                      style={{ 
-                        borderColor: name === 'GitHub' 
-                          ? (hoveredSocial === index ? '#F8FAFC' : '#6B7280')
-                          : color,
-                        backgroundColor: name === 'GitHub'
-                          ? (hoveredSocial === index ? '#374151' : '#F8FAFC')
-                          : (hoveredSocial === index ? color : 'white'),
-                        color: name === 'GitHub'
-                          ? (hoveredSocial === index ? '#F8FAFC' : '#374151')
-                          : (hoveredSocial === index ? 'white' : color),
-                      }}
-                      whileHover={{ 
-                        scale: 1.1,
-                        rotate: 5,
-                      }}
-                    >
-                      {icon === 'custom' ? (
-                        <div style={{ 
-                          color: name === 'GitHub'
-                            ? (hoveredSocial === index ? '#F8FAFC' : '#374151')
-                            : (hoveredSocial === index ? 'white' : color)
-                        }}>
-                          {customIcon}
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-white/20 bg-black/30 text-white placeholder-slate-400 focus:border-white focus:ring-2 focus:ring-white/20 transition-all duration-300"
+                      placeholder="Your name"
+                    />
                         </div>
-                      ) : (
-                        <Icon 
-                          name={icon} 
-                          className="w-6 h-6" 
-                          style={{ 
-                            color: name === 'GitHub'
-                              ? (hoveredSocial === index ? '#F8FAFC' : '#374151')
-                              : (hoveredSocial === index ? 'white' : color)
-                          }}
-                        />
-                      )}
-                    </motion.div>
-                    
-                    <span 
-                      className="font-semibold text-lg transition-colors duration-300 text-slate-700 dark:text-slate-200"
-                      style={{ 
-                        color: hoveredSocial === index 
-                          ? (name === 'GitHub' ? '#F8FAFC' : color)
-                          : undefined 
-                      }}
-                    >
-                      {name}
-                    </span>
-
-                    {/* Enhanced hover effect for GitHub */}
-                    {name === 'GitHub' && hoveredSocial === index && (
-                      <motion.div
-                        className="absolute inset-0 rounded-xl pointer-events-none"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(248, 250, 252, 0.1), rgba(107, 114, 128, 0.1))',
-                          border: '1px solid rgba(248, 250, 252, 0.2)',
-                        }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                  </motion.a>
-                ))}
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-white/20 bg-black/30 text-white placeholder-slate-400 focus:border-white focus:ring-2 focus:ring-white/20 transition-all duration-300"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-slate-300 mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-black/30 text-white placeholder-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300"
+                    placeholder="What's this about?"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-black/30 text-white placeholder-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 resize-none"
+                    placeholder="Tell me about your project or idea..."
+                  />
               </div>
               
-              <motion.p 
-                className="text-slate-500 dark:text-slate-400 text-center mt-8 transition-colors duration-300"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                Feel free to reach out on any platform!
-              </motion.p>
+                <motion.button
+                  type="submit"
+                  className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-gray-700 to-gray-500 text-white font-medium transition-all duration-300 hover:from-gray-600 hover:to-gray-400"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Send Message
+                </motion.button>
+              </form>
             </div>
           </motion.div>
         </div>
