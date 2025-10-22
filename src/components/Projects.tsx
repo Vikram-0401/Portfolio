@@ -55,18 +55,18 @@ const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   return (
-    <section id="projects" className="py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-16 sm:py-20 md:py-24">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -75,7 +75,7 @@ const Projects = () => {
             Featured Projects
           </motion.h2>
           <motion.div
-            className="w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full"
+            className="w-24 sm:w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: 128 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -91,7 +91,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects - vertical list */}
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -105,7 +105,7 @@ const Projects = () => {
             >
               {/* Project Card */}
               <motion.div
-                className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl"
+                className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,
@@ -117,7 +117,7 @@ const Projects = () => {
                 }}
               >
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                   <motion.img
                     src={project.image}
                     alt={project.title}
@@ -127,9 +127,9 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   
                   {/* Project Title Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4">
+                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
                     <h3 
-                      className="text-xl font-bold mb-2 transition-colors duration-300"
+                      className="text-lg sm:text-xl font-bold mb-2 transition-colors duration-300"
                       style={{ 
                         color: hoveredProject === index ? (project.accentColor || project.color) : '#ffffff' 
                       }}
@@ -140,8 +140,8 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
-                  <p className="text-slate-400 leading-relaxed mb-6">
+                <div className="p-4 sm:p-6">
+                  <p className="text-sm sm:text-base text-slate-400 leading-relaxed mb-4 sm:mb-6">
                     {project.description}
                   </p>
 
@@ -150,7 +150,7 @@ const Projects = () => {
                     {project.tech.map((tech, techIndex) => (
                       <motion.span
                         key={tech}
-                        className="px-3 py-1 rounded-full text-xs font-medium border border-white/20 text-slate-300 bg-black/30 transition-all duration-300"
+                        className="px-2 sm:px-3 py-1 rounded-full text-xs font-medium border border-white/20 text-slate-300 bg-black/30 transition-all duration-300"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ 
@@ -169,12 +169,12 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-white/20 text-slate-300 bg-black/30 transition-all duration-300 hover:border-white/40 hover:text-white"
+                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-white/20 text-slate-300 bg-black/30 transition-all duration-300 hover:border-white/40 hover:text-white text-sm sm:text-base"
                       whileHover={{ 
                         scale: 1.05,
                         borderColor: project.color,
@@ -191,7 +191,7 @@ const Projects = () => {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-500 text-white font-medium transition-all duration-300 hover:from-gray-600 hover:to-gray-400"
+                        className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-500 text-white font-medium transition-all duration-300 hover:from-gray-600 hover:to-gray-400 text-sm sm:text-base"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >

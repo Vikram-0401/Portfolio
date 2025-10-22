@@ -52,17 +52,17 @@ const Hero = () => {
   };
 
   return (
-    <div className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center px-2 sm:px-4 md:px-8 py-8 md:py-0 relative overflow-hidden">
+    <div className="w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-20 relative overflow-hidden">
       {/* Background visuals handled globally by Spotlight. Remove local orbs/shapes. */}
 
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 z-10 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12">
           {/* Content Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center lg:text-left space-y-8 lg:w-1/2"
+            className="text-center lg:text-left space-y-6 sm:space-y-8 lg:w-1/2"
           >
             <motion.h1 
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white space-y-2"
@@ -117,11 +117,11 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <motion.button
                 onClick={() => handleNavigate('/contact')}
-                className="px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 text-white rounded-lg font-medium relative overflow-hidden group"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-gray-700 to-gray-500 text-white rounded-lg font-medium relative overflow-hidden group text-sm sm:text-base"
                 whileHover={{ 
                   scale: 1.02,
                   boxShadow: "0 10px 25px rgba(255, 255, 255, 0.1)",
@@ -133,7 +133,7 @@ const Hero = () => {
               
               <motion.button
                 onClick={() => handleNavigate('/projects')}
-                className="px-8 py-4 border-2 border-white/20 text-white rounded-lg font-medium relative overflow-hidden group hover:border-white"
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/20 text-white rounded-lg font-medium relative overflow-hidden group hover:border-white text-sm sm:text-base"
                 whileHover={{ 
                   scale: 1.02,
                   color: '#ffffff',
@@ -188,7 +188,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="w-full lg:w-1/2"
           >
-            <div className="relative w-full h-[350px] md:h-[400px] lg:h-[500px]">
+            <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]">
                 {/* Clean container */}
                 <motion.div
                   className="absolute inset-0 rounded-2xl overflow-hidden border border-white/20 bg-black/50 backdrop-blur-sm z-10"
@@ -197,11 +197,11 @@ const Hero = () => {
                   }}
               >
                 {/* Skills nodes */}
-                <div className="absolute inset-0 p-8">
+                <div className="absolute inset-0 p-4 sm:p-6 md:p-8">
                   {skills.map((skill, index) => {
                     const IconComponent = skill.icon;
                     const isCenter = skill.name === "AI/ML";
-                    const size = isCenter ? 70 : 50;
+                    const size = isCenter ? 60 : 40; // Reduced for mobile
                     
                     return (
                       <motion.div
@@ -241,7 +241,7 @@ const Hero = () => {
                           }}
                         >
                           <IconComponent 
-                            size={size * 0.4} 
+                            size={isCenter ? 24 : 18} 
                             color={skill.color}
                           />
                           

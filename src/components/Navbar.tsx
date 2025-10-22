@@ -43,29 +43,30 @@ const Navbar = () => {
         boxShadow: `0 4px 30px rgba(0, 0, 0, ${shadowOpacity.get()})`,
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="relative flex items-center justify-between">
-          <div className="relative flex items-center justify-between w-full px-4 sm:px-6 py-2.5">
+          <div className="relative flex items-center justify-between w-full px-2 sm:px-4 py-2 sm:py-2.5">
             <motion.div className="flex items-center" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Link to="/" className="text-xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent flex items-center">
+              <Link to="/" className="text-lg sm:text-xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent flex items-center">
                 Vikram <span className="hidden sm:inline font-semibold">&nbsp;R</span>
               </Link>
             </motion.div>
 
-            <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
-              <div className="flex items-center space-x-2 lg:space-x-3">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-1 xl:space-x-3">
+              <div className="flex items-center space-x-1 xl:space-x-3">
                 {navItems.map(({ name, path, icon }) => (
                   <motion.div key={name} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
                     <Link
                       to={path}
-                      className={`relative flex items-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 ${
+                      className={`relative flex items-center space-x-1 xl:space-x-2 px-2 xl:px-4 py-2 xl:py-2.5 text-xs xl:text-sm font-medium rounded-lg transition-all duration-300 ${
                         isActive(path)
                           ? 'text-white'
                           : 'text-slate-300 hover:text-white'
                       }`}
                     >
-                      <Icon name={icon as any} className="w-4 h-4" />
-                      <span>{name}</span>
+                      <Icon name={icon as any} className="w-3 h-3 xl:w-4 xl:h-4" />
+                      <span className="hidden xl:inline">{name}</span>
                     </Link>
                   </motion.div>
                 ))}
@@ -83,19 +84,60 @@ const Navbar = () => {
                   speed="4s"
                   thickness={1}
                 >
-                  <div className="flex items-center space-x-2">
-                    <Icon name="Download" className="w-4 h-4" />
-                    <span className="font-medium">Resume</span>
+                  <div className="flex items-center space-x-1 xl:space-x-2">
+                    <Icon name="Download" className="w-3 h-3 xl:w-4 xl:h-4" />
+                    <span className="font-medium text-xs xl:text-sm">Resume</span>
                   </div>
                 </StarBorder>
               </motion.div>
             </div>
 
-            <div className="flex items-center gap-2 md:hidden mobile-menu-container">
+            {/* Tablet Navigation */}
+            <div className="hidden md:flex lg:hidden items-center space-x-2">
+              <div className="flex items-center space-x-2">
+                {navItems.slice(0, 3).map(({ name, path, icon }) => (
+                  <motion.div key={name} whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
+                    <Link
+                      to={path}
+                      className={`relative flex items-center space-x-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                        isActive(path)
+                          ? 'text-white'
+                          : 'text-slate-300 hover:text-white'
+                      }`}
+                    >
+                      <Icon name={icon as any} className="w-4 h-4" />
+                      <span>{name}</span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              
+              {/* Resume Button for Tablet */}
+              <motion.div whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
+                <StarBorder
+                  as="a"
+                  href="https://drive.google.com/file/d/1OhUq_LDYs4hYyOWbfQTfUPJR4EMZHAjj/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resume-button"
+                  color="white"
+                  speed="4s"
+                  thickness={1}
+                >
+                  <div className="flex items-center space-x-2">
+                    <Icon name="Download" className="w-4 h-4" />
+                    <span className="font-medium text-sm">Resume</span>
+                  </div>
+                </StarBorder>
+              </motion.div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="flex items-center gap-2 md:hidden">
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={(e) => { e.stopPropagation(); setIsMenuOpen(!isMenuOpen); }}
-                className="text-slate-300 p-2.5 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300"
+                className="p-2 rounded-lg text-white hover:bg-white/10 transition-colors duration-200"
                 aria-label="Toggle mobile menu"
               >
                 <Icon name={isMenuOpen ? 'X' : 'Menu'} className="w-5 h-5" />
@@ -114,12 +156,12 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="mobile-menu md:hidden mobile-menu-container"
           >
-            <div className="mx-4 mt-3 mb-4 p-4 rounded-xl bg-black/80 backdrop-blur-lg shadow-lg border border-white/20 max-h-[80vh] overflow-y-auto">
+            <div className="mx-3 sm:mx-4 mt-3 mb-4 p-3 sm:p-4 rounded-xl bg-black/80 backdrop-blur-lg shadow-lg border border-white/20 max-h-[80vh] overflow-y-auto">
               {navItems.map(({ name, path, icon }) => (
                 <motion.div key={name} whileTap={{ scale: 0.98 }}>
                   <Link
                     to={path}
-                    className={`flex items-center justify-between px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    className={`flex items-center justify-between px-4 sm:px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       isActive(path)
                         ? 'text-white'
                         : 'text-slate-300 hover:text-white'

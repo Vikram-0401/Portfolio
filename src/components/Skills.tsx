@@ -32,18 +32,18 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-16 sm:py-20 md:py-24 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white"
             whileHover={{
               scale: 1.02,
               transition: { duration: 0.3 }
@@ -53,7 +53,7 @@ const SkillsSection = () => {
           </motion.h2>
           
           <motion.div
-            className="w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full mb-6"
+            className="w-24 sm:w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full mb-4 sm:mb-6"
             initial={{ width: 0 }}
             whileInView={{ width: 128 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -70,7 +70,7 @@ const SkillsSection = () => {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -82,7 +82,7 @@ const SkillsSection = () => {
             >
               {/* Category Card */}
               <motion.div
-                className="rounded-2xl p-8 shadow-xl border transition-all duration-300 bg-black/40 border-white/15 backdrop-blur-md"
+                className="rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl border transition-all duration-300 bg-black/40 border-white/15 backdrop-blur-md"
                 style={{
                   borderColor: hoveredCategory === categoryIndex ? category.color : undefined,
                   boxShadow: hoveredCategory === categoryIndex 
@@ -134,7 +134,7 @@ const SkillsSection = () => {
                 
                 {/* Skills Grid */}
                 <motion.div 
-                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
+                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4"
                   variants={{
                     hidden: { opacity: 0 },
                     visible: {
@@ -149,7 +149,7 @@ const SkillsSection = () => {
                   {category.skills.map((skill) => (
                     <motion.div
                       key={skill}
-                      className="group relative p-4 rounded-xl border bg-black/30 border-white/10 cursor-pointer transition-all duration-300"
+                      className="group relative p-3 sm:p-4 rounded-lg sm:rounded-xl border bg-black/30 border-white/10 cursor-pointer transition-all duration-300"
                       style={{
                         borderColor: hoveredCategory === categoryIndex ? `${category.color}40` : undefined,
                         backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
@@ -175,7 +175,7 @@ const SkillsSection = () => {
                           <img
                             src="/images/websockets.svg"
                             alt={skill}
-                            className="w-8 h-8 md:w-10 md:h-10"
+                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
                             style={{ 
                               filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
                               opacity: hoveredCategory === categoryIndex ? 1 : 0.8
@@ -185,7 +185,7 @@ const SkillsSection = () => {
                           <img
                             src="/images/Hono.svg"
                             alt={skill}
-                            className="w-8 h-8 md:w-10 md:h-10"
+                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
                             style={{ 
                               filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
                               opacity: hoveredCategory === categoryIndex ? 1 : 0.8
@@ -195,7 +195,7 @@ const SkillsSection = () => {
                           <img
                             src="/images/numpy.png"
                             alt={skill}
-                            className="w-8 h-8 md:w-10 md:h-10"
+                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
                             style={{ 
                               filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
                               opacity: hoveredCategory === categoryIndex ? 1 : 0.8
@@ -205,7 +205,7 @@ const SkillsSection = () => {
                           <img
                             src="/images/pandas.png"
                             alt={skill}
-                            className="w-8 h-8 md:w-10 md:h-10"
+                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
                             style={{ 
                               filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
                               opacity: hoveredCategory === categoryIndex ? 1 : 0.8
@@ -232,7 +232,7 @@ const SkillsSection = () => {
                       
                       {/* Skill Name */}
                       <span 
-                        className={`text-sm md:text-base font-medium text-center block transition-colors duration-300 text-slate-200`}
+                        className={`text-xs sm:text-sm md:text-base font-medium text-center block transition-colors duration-300 text-slate-200`}
                         style={{ color: hoveredCategory === categoryIndex ? category.color : undefined }}
                       >
                         {skill === 'Tailwind' ? 'Tailwind CSS' : 
