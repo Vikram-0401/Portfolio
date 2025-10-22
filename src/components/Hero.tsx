@@ -3,6 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Icon from './ui/Icon';
+import StarBorder from './StarBorder';
 import { FaReact, FaPython, FaDocker, FaGitAlt, FaJs, FaFireAlt } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiNextdotjs, SiLeetcode } from 'react-icons/si';
 import { BsFillLightningFill } from 'react-icons/bs';

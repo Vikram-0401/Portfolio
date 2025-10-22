@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from './ui/Icon';
+import StarBorder from './StarBorder';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,17 +71,23 @@ const Navbar = () => {
                 ))}
               </div>
               
-              {/* Resume Button */}
+              {/* Resume Button with StarBorder Effect */}
               <motion.div whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
-                <a
+                <StarBorder
+                  as="a"
                   href="https://drive.google.com/file/d/1OhUq_LDYs4hYyOWbfQTfUPJR4EMZHAjj/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:from-gray-600 hover:to-gray-400 border border-white/20 hover:border-white/40"
+                  className="resume-button"
+                  color="white"
+                  speed="4s"
+                  thickness={1}
                 >
-                  <Icon name="Download" className="w-4 h-4" />
-                  <span>Resume</span>
-                </a>
+                  <div className="flex items-center space-x-2">
+                    <Icon name="Download" className="w-4 h-4" />
+                    <span className="font-medium">Resume</span>
+                  </div>
+                </StarBorder>
               </motion.div>
             </div>
 
@@ -132,19 +139,25 @@ const Navbar = () => {
               
               {/* Resume Button for Mobile */}
               <motion.div whileTap={{ scale: 0.98 }}>
-                <a
+                <StarBorder
+                  as="a"
                   href="https://drive.google.com/file/d/1OhUq_LDYs4hYyOWbfQTfUPJR4EMZHAjj/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between px-5 py-3 mb-2 rounded-lg text-sm font-medium transition-all duration-300 bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:from-gray-600 hover:to-gray-400 border border-white/20 hover:border-white/40"
+                  className="resume-button"
+                  color="white"
+                  speed="4s"
+                  thickness={1}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="flex items-center space-x-3">
-                    <Icon name="Download" className="w-4 h-4 text-white" />
-                    <span>Resume</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <Icon name="Download" className="w-4 h-4" />
+                      <span className="font-medium">Resume</span>
+                    </div>
+                    <Icon name="ExternalLink" className="w-3.5 h-3.5" />
                   </div>
-                  <Icon name="ExternalLink" className="w-3.5 h-3.5 text-white" />
-                </a>
+                </StarBorder>
               </motion.div>
             </div>
           </motion.div>
