@@ -1,18 +1,18 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import { UniversalBackground } from './components/Background';
 import { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import About from './components/About';
+import { UniversalBackground } from './components/Background';
+import Contact from './components/Contact';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
 
   return null;
@@ -20,60 +20,32 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <div className="min-h-screen text-white overflow-x-hidden relative">
+    <div className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <UniversalBackground />
       <ScrollToTop />
       <Navbar />
-      <main className="min-h-[calc(100vh-80px)] relative z-10">
+      <main className="relative z-10">
         <Routes>
-          <Route path="/" element={
-            <div className="w-full">
-              {/* Hero Section */}
-              <section id="hero" className="min-h-[calc(100vh-80px)] flex items-center">
-              <Hero />
-            </section>
-              {/* About Section */}
-              <section id="about" className="min-h-screen py-20">
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
                 <About />
-              </section>
-              {/* Skills Section */}
-              <section id="skills" className="min-h-screen py-20">
                 <Skills />
-              </section>
-              {/* Projects Section */}
-              <section id="projects" className="min-h-screen py-20">
                 <Projects />
-              </section>
-              {/* Contact Section */}
-              <section id="contact" className="min-h-screen py-20">
                 <Contact />
-              </section>
-            </div>
-          } />
-          <Route path="/about" element={
-            <section id="about" className="min-h-[calc(100vh-80px)] pt-20">
-              <About />
-            </section>
-          } />
-          <Route path="/skills" element={
-            <section id="skills" className="min-h-[calc(100vh-80px)] pt-20">
-              <Skills />
-            </section>
-          } />
-          <Route path="/projects" element={
-            <section id="projects" className="min-h-[calc(100vh-80px)] pt-20">
-              <Projects />
-            </section>
-          } />
-          <Route path="/contact" element={
-            <section id="contact" className="min-h-[calc(100vh-80px)] pt-20">
-              <Contact />
-            </section>
-          } />
+              </>
+            }
+          />
+          <Route path="/about" element={<About isStandalone />} />
+          <Route path="/skills" element={<Skills isStandalone />} />
+          <Route path="/projects" element={<Projects isStandalone />} />
+          <Route path="/contact" element={<Contact isStandalone />} />
         </Routes>
       </main>
-      <footer className="py-6 text-center text-slate-500 border-t border-slate-800 bg-black/[0.96] relative z-10">
-        <p>© {new Date().getFullYear()} Vikram R. All rights reserved.</p>
+      <footer className="relative z-10 border-t border-white/10 bg-black/80 px-4 py-7 text-center text-sm text-slate-500 backdrop-blur-xl">
+        <p>© {new Date().getFullYear()} Vikram R. Crafted for curious, useful software.</p>
       </footer>
     </div>
   );

@@ -1,64 +1,94 @@
-import React from 'react';
-import { 
-  Home, User, Lightbulb, Layers, Mail, Menu, X, Download, 
-  ChevronDown, Github, Linkedin, Twitter, ArrowRight,
-  Compass, PenTool, Gamepad2, MessageSquare, ExternalLink,
-  MapPin, Sun, Moon, Monitor
+import type { FC } from 'react';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  AtSign,
+  BrainCircuit,
+  ChevronDown,
+  Clock,
+  Code2,
+  Compass,
+  Cpu,
+  Database,
+  Download,
+  ExternalLink,
+  Gamepad2,
+  Github,
+  GraduationCap,
+  Home,
+  Layers,
+  Lightbulb,
+  Linkedin,
+  Mail,
+  MapPin,
+  Menu,
+  MessageSquare,
+  Monitor,
+  Moon,
+  PenTool,
+  Send,
+  Sparkles,
+  Sun,
+  Twitter,
+  User,
+  Wrench,
+  X,
 } from 'lucide-react';
 
-// Map of icon names to components
 const iconMap = {
-  Home,
-  User,
-  Lightbulb,
-  Layers,
-  Mail,
-  Menu,
-  X,
-  Download,
-  ChevronDown,
-  Github,
-  Linkedin,
-  Twitter,
   ArrowRight,
+  ArrowUpRight,
+  AtSign,
+  BrainCircuit,
+  ChevronDown,
+  Clock,
+  Code2,
   Compass,
-  PenTool,
-  Gamepad2,
-  MessageSquare,
+  Cpu,
+  Database,
+  Download,
   ExternalLink,
+  Gamepad2,
+  Github,
+  GraduationCap,
+  Home,
+  Layers,
+  Lightbulb,
+  Linkedin,
+  Mail,
   MapPin,
-  Sun,
+  Menu,
+  MessageSquare,
+  Monitor,
   Moon,
-  Monitor
+  PenTool,
+  Send,
+  Sparkles,
+  Sun,
+  Twitter,
+  User,
+  Wrench,
+  X,
 };
 
+export type IconName = keyof typeof iconMap;
+
 interface IconProps {
-  name: keyof typeof iconMap;
+  name: IconName;
   size?: number;
   color?: string;
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ 
-  name, 
-  size = 24, 
+const Icon: FC<IconProps> = ({
+  name,
+  size = 24,
   color = 'currentColor',
-  className = ''
+  className = '',
 }) => {
   const IconComponent = iconMap[name];
-  
-  if (!IconComponent) {
-    console.warn(`Icon "${name}" not found`);
-    return null;
-  }
 
-  return (
-    <IconComponent 
-      size={size} 
-      color={color} 
-      className={className} 
-    />
-  );
+  return <IconComponent size={size} color={color} className={className} />;
 };
 
 export default Icon;

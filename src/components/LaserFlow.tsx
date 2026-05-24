@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties, type FC } from 'react';
 import * as THREE from 'three';
 import './LaserFlow.css';
 
 type Props = {
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   wispDensity?: number;
   dpr?: number;
   mouseSmoothTime?: number;
@@ -23,6 +23,35 @@ type Props = {
   falloffStart?: number;
   fogFallSpeed?: number;
   color?: string;
+};
+
+type NumberUniform = { value: number };
+type LaserUniformValue = NumberUniform | { value: THREE.Vector3 } | { value: THREE.Vector4 };
+
+type LaserUniforms = {
+  [key: string]: LaserUniformValue;
+  iTime: NumberUniform;
+  iResolution: { value: THREE.Vector3 };
+  iMouse: { value: THREE.Vector4 };
+  uWispDensity: NumberUniform;
+  uTiltScale: NumberUniform;
+  uFlowTime: NumberUniform;
+  uFogTime: NumberUniform;
+  uBeamXFrac: NumberUniform;
+  uBeamYFrac: NumberUniform;
+  uFlowSpeed: NumberUniform;
+  uVLenFactor: NumberUniform;
+  uHLenFactor: NumberUniform;
+  uFogIntensity: NumberUniform;
+  uFogScale: NumberUniform;
+  uWSpeed: NumberUniform;
+  uWIntensity: NumberUniform;
+  uFlowStrength: NumberUniform;
+  uDecay: NumberUniform;
+  uFalloffStart: NumberUniform;
+  uFogFallSpeed: NumberUniform;
+  uColor: { value: THREE.Vector3 };
+  uFade: NumberUniform;
 };
 
 const VERT = `
@@ -261,7 +290,7 @@ void main(){
 }
 `;
 
-export const LaserFlow: React.FC<Props> = ({
+export const LaserFlow: FC<Props> = ({
   className,
   style,
   wispDensity = 1,
@@ -285,7 +314,7 @@ export const LaserFlow: React.FC<Props> = ({
 }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const uniformsRef = useRef<any>(null);
+  const uniformsRef = useRef<LaserUniforms | null>(null);
   const hasFadedRef = useRef(false);
   const rectRef = useRef<DOMRect | null>(null);
   const baseDprRef = useRef<number>(1);
@@ -342,7 +371,7 @@ export const LaserFlow: React.FC<Props> = ({
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3));
 
-    const uniforms = {
+    const uniforms: LaserUniforms = {
       iTime: { value: 0 },
       iResolution: { value: new THREE.Vector3(1, 1, 1) },
       iMouse: { value: new THREE.Vector4(0, 0, 0, 0) },
@@ -431,12 +460,12 @@ export const LaserFlow: React.FC<Props> = ({
       const hb = rect.height * ratio;
       mouseTarget.set(x * ratio, hb - y * ratio);
     };
-    const onMove = (ev: PointerEvent | MouseEvent) => updateMouse(ev.clientX, ev.clientY);
+    const onMove = (ev: PointerEvent) => updateMouse(ev.clientX, ev.clientY);
     const onLeave = () => mouseTarget.set(0, 0);
-    canvas.addEventListener('pointermove', onMove as any, { passive: true });
-    canvas.addEventListener('pointerdown', onMove as any, { passive: true });
-    canvas.addEventListener('pointerenter', onMove as any, { passive: true });
-    canvas.addEventListener('pointerleave', onLeave as any, { passive: true });
+    canvas.addEventListener('pointermove', onMove, { passive: true });
+    canvas.addEventListener('pointerdown', onMove, { passive: true });
+    canvas.addEventListener('pointerenter', onMove, { passive: true });
+    canvas.addEventListener('pointerleave', onLeave, { passive: true });
 
     const onCtxLost = (e: Event) => {
       e.preventDefault();
@@ -531,10 +560,10 @@ export const LaserFlow: React.FC<Props> = ({
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', onVis);
-      canvas.removeEventListener('pointermove', onMove as any);
-      canvas.removeEventListener('pointerdown', onMove as any);
-      canvas.removeEventListener('pointerenter', onMove as any);
-      canvas.removeEventListener('pointerleave', onLeave as any);
+      canvas.removeEventListener('pointermove', onMove);
+      canvas.removeEventListener('pointerdown', onMove);
+      canvas.removeEventListener('pointerenter', onMove);
+      canvas.removeEventListener('pointerleave', onLeave);
       canvas.removeEventListener('webglcontextlost', onCtxLost);
       canvas.removeEventListener('webglcontextrestored', onCtxRestored);
       geometry.dispose();

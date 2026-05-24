@@ -1,249 +1,105 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import Icon, { type IconName } from './ui/Icon';
 
-const SkillsSection = () => {
-  const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
+type SkillsProps = {
+  isStandalone?: boolean;
+};
 
-  const skillCategories = [
-    {
-      title: "Development",
-      color: "#ffffff",
-      skills: ['React', 'Next', 'MongoDB', 'Express', 'Hono','TypeScript', 'Firebase', 'PostgreSQL', 'Prisma', 'Cloudflare', 'Tailwind', 'WebSocket'],
-      description: "Full-stack development with modern frameworks"
-    },
-    {
-      title: "Languages",
-      color: "#e5e5e5",
-      skills: ['C++', 'C', 'JavaScript', 'HTML/CSS'],
-      description: "Programming languages and markup technologies"
-    },
-    {
-      title: "Aiml",
-      color: "#d4d4d4",
-      skills: ['Python', 'NumPy', 'Pandas'],
-      description: "Artificial Intelligence and Machine Learning"
-    },
-    {
-      title: "Tools & Platforms",
-      color: "#a3a3a3",
-      skills: ['Git', 'GitHub', 'VSCode', 'Docker', 'Postman', 'Figma'],
-      description: "Development tools and version control"
-    }
-  ];
+const skillCategories: Array<{
+  title: string;
+  icon: IconName;
+  accent: string;
+  description: string;
+  skills: string[];
+}> = [
+  {
+    title: 'Full-stack Development',
+    icon: 'Code2',
+    accent: '#7dd3fc',
+    description: 'Interfaces, APIs, databases, auth, deployment, and production-focused user flows.',
+    skills: ['React', 'Next.js', 'TypeScript', 'Express', 'Hono', 'MongoDB', 'PostgreSQL', 'Prisma', 'Firebase', 'Tailwind CSS'],
+  },
+  {
+    title: 'AI and Data',
+    icon: 'BrainCircuit',
+    accent: '#34d399',
+    description: 'Applied machine learning, Python data workflows, and practical model-powered products.',
+    skills: ['Python', 'TensorFlow', 'Keras', 'NumPy', 'Pandas', 'OpenCV', 'AI Workflows', 'Data Processing'],
+  },
+  {
+    title: 'Systems and Tools',
+    icon: 'Wrench',
+    accent: '#f59e0b',
+    description: 'Developer tooling, version control, containers, testing APIs, and cloud-ready delivery.',
+    skills: ['Git', 'GitHub', 'Docker', 'Postman', 'VS Code', 'Cloudflare Workers', 'WebSockets', 'Figma'],
+  },
+  {
+    title: 'Programming Foundations',
+    icon: 'Cpu',
+    accent: '#fda4af',
+    description: 'Strong fundamentals in algorithms, data structures, and language-level problem solving.',
+    skills: ['C++', 'C', 'JavaScript', 'HTML', 'CSS', 'DSA', 'Problem Solving', 'Competitive Programming'],
+  },
+];
 
+const Skills = ({ isStandalone = false }: SkillsProps) => {
   return (
-    <section id="skills" className="py-16 sm:py-20 md:py-24 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-        {/* Section Header */}
+    <section id="skills" className={`section-shell scroll-mt-24 ${isStandalone ? 'pt-32' : ''}`}>
+      <div className="section-inner">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="mx-auto max-w-3xl text-center"
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          transition={{ duration: 0.65 }}
+          viewport={{ once: true, margin: '-80px' }}
         >
-          <motion.h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white"
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3 }
-            }}
-          >
-            Technical Expertise
-          </motion.h2>
-          
-          <motion.div
-            className="w-24 sm:w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full mb-4 sm:mb-6"
-            initial={{ width: 0 }}
-            whileInView={{ width: 128 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-          
-          <motion.p
-            className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg transition-colors duration-300"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            A comprehensive overview of my technical skills and expertise across various domains
-          </motion.p>
+          <span className="section-kicker">
+            <Icon name="Sparkles" className="h-4 w-4 text-cyan-200" />
+            Technical expertise
+          </span>
+          <h2 className="section-title">A stack built for real products.</h2>
+          <p className="section-copy mx-auto">
+            From polished frontends to APIs, ML experiments, and deployment workflows, these are the tools I use to turn ideas into working software.
+          </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="space-y-6 sm:space-y-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
+        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          {skillCategories.map((category, index) => (
+            <motion.article
               key={category.title}
-              initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
-              viewport={{ once: true }}
-              className="relative"
+              className="interactive-card p-5 sm:p-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.08, duration: 0.55 }}
+              viewport={{ once: true, margin: '-80px' }}
+              whileHover={{ y: -5 }}
             >
-              {/* Category Card */}
-              <motion.div
-                className="rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl border transition-all duration-300 bg-black/40 border-white/15 backdrop-blur-md"
-                style={{
-                  borderColor: hoveredCategory === categoryIndex ? category.color : undefined,
-                  boxShadow: hoveredCategory === categoryIndex 
-                    ? `0 20px 40px ${category.color}20` 
-                    : undefined,
-                }}
-                whileHover={{
-                  y: -4,
-                  transition: { duration: 0.2 }
-                }}
-                onHoverStart={() => setHoveredCategory(categoryIndex)}
-                onHoverEnd={() => setHoveredCategory(null)}
-              >
-                {/* Header */}
-                <motion.div
-                  className="flex items-center gap-4 mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + categoryIndex * 0.1 }}
-                >
-                  <motion.div
-                    className="text-4xl p-3 rounded-xl border bg-black/50 transition-all duration-300"
-                    style={{ 
-                      borderColor: category.color,
-                      backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
-                    }}
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: 5,
-                    }}
+              <div className="relative">
+                <div className="flex items-start gap-4">
+                  <div
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border bg-black/[0.45]"
+                    style={{ color: category.accent, borderColor: `${category.accent}55` }}
                   >
-                    {category.icon}
-                  </motion.div>
-                  
-                  <div>
-                    <motion.h3 
-                      className="text-2xl md:text-3xl font-bold mb-2 transition-colors duration-300"
-                      style={{ 
-                        color: category.color
-                      }}
-                    >
-                      {category.title}
-                    </motion.h3>
-                    <p className="text-slate-300 transition-colors duration-300">
-                      {category.description}
-                    </p>
+                    <Icon name={category.icon} className="h-5 w-5" />
                   </div>
-                </motion.div>
-                
-                {/* Skills Grid */}
-                <motion.div 
-                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4"
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: {
-                      opacity: 1,
-                      transition: { staggerChildren: 0.1 }
-                    }
-                  }}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
+                  <div>
+                    <h3 className="text-xl font-black text-white">{category.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{category.description}</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
-                    <motion.div
+                    <span
                       key={skill}
-                      className="group relative p-3 sm:p-4 rounded-lg sm:rounded-xl border bg-black/30 border-white/10 cursor-pointer transition-all duration-300"
-                      style={{
-                        borderColor: hoveredCategory === categoryIndex ? `${category.color}40` : undefined,
-                        backgroundColor: hoveredCategory === categoryIndex ? `${category.color}10` : undefined,
-                      }}
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      whileHover={{ 
-                        y: -4,
-                        scale: 1.02,
-                        borderColor: category.color,
-                        backgroundColor: `${category.color}15`,
-                        boxShadow: `0 8px 20px ${category.color}20`,
-                      }}
+                      className="inline-flex min-h-9 items-center rounded-full border border-white/10 bg-white/[0.045] px-3 text-sm font-semibold text-slate-200"
                     >
-                      {/* Skill Icon */}
-                      <motion.div 
-                        className="flex items-center justify-center mb-3"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
-                        {skill === 'WebSocket' ? (
-                          <img
-                            src="/images/websockets.svg"
-                            alt={skill}
-                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
-                            style={{ 
-                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
-                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
-                            }}
-                          />
-                        ) : skill === 'Hono' ? (
-                          <img
-                            src="/images/Hono.svg"
-                            alt={skill}
-                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
-                            style={{ 
-                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
-                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
-                            }}
-                          />
-                        ) : skill === 'NumPy' ? (
-                          <img
-                            src="/images/numpy.png"
-                            alt={skill}
-                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
-                            style={{ 
-                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
-                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
-                            }}
-                          />
-                        ) : skill === 'Pandas' ? (
-                          <img
-                            src="/images/pandas.png"
-                            alt={skill}
-                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
-                            style={{ 
-                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
-                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
-                            }}
-                          />
-                        ) : (
-                          <img
-                            src={`https://skillicons.dev/icons?i=${
-                              skill.toLowerCase() === 'c++' ? 'cpp' : 
-                              skill.toLowerCase() === 'html/css' ? 'html' : 
-                              skill.toLowerCase() === 'cloudflare' ? 'cloudflare' :
-                              skill.toLowerCase() === 'tailwind' ? 'tailwind' :
-                              skill.toLowerCase()
-                            }`}
-                            alt={skill}
-                            className={`w-8 h-8 md:w-10 md:h-10${skill.toLowerCase() === 'next.js' || skill.toLowerCase() === 'nextjs' ? ' nextjs-icon' : ''}`}
-                            style={{ 
-                              filter: 'grayscale(100%) brightness(0.8) contrast(1.2)',
-                              opacity: hoveredCategory === categoryIndex ? 1 : 0.8
-                            }}
-                          />
-                        )}
-                      </motion.div>
-                      
-                      {/* Skill Name */}
-                      <span 
-                        className={`text-xs sm:text-sm md:text-base font-medium text-center block transition-colors duration-300 text-slate-200`}
-                        style={{ color: hoveredCategory === categoryIndex ? category.color : undefined }}
-                      >
-                        {skill === 'Tailwind' ? 'Tailwind CSS' : 
-                         skill === 'Cloudflare' ? 'Cloudflare Workers' : 
-                         skill}
-                      </span>
-                    </motion.div>
+                      {skill}
+                    </span>
                   ))}
-                </motion.div>
-              </motion.div>
-            </motion.div>
+                </div>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
@@ -251,4 +107,4 @@ const SkillsSection = () => {
   );
 };
 
-export default SkillsSection;
+export default Skills;

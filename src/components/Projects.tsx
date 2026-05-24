@@ -1,237 +1,166 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Icon from './ui/Icon';
+
+type ProjectsProps = {
+  isStandalone?: boolean;
+};
 
 const projects = [
   {
     title: 'Modernizing Laboratory Assessment',
-    description: 'Digital platform for lab assessments with real-time feedback. Features code execution and analytics for enhanced learning.',
+    description: 'Digital lab assessment platform with code execution, structured evaluation, and real-time feedback for practical learning.',
     image: '/images/Modernizing_lab_SS.png',
-    tech: ['React', 'Express', 'MongoDB', 'Piston Api', 'Monaco Editor', 'Node.js'],
+    tech: ['React', 'Express', 'MongoDB', 'Piston API', 'Monaco Editor', 'Node.js'],
     github: 'https://github.com/Vikram-0401/Modernizing-Laboratory-Assessment.git',
     demo: 'https://labtests.vercel.app/',
-    color: '#ffffff'
+    accent: '#7dd3fc',
   },
   {
     title: 'Crop Disease Detection',
-    description: 'AI-powered system to detect crop diseases from leaf images, providing quick diagnosis to assist farmers in early intervention.',
+    description: 'AI-powered crop diagnosis workflow that analyzes leaf images and helps surface early disease insights for farmers.',
     image: '/images/crop_disease_detection.png',
     tech: ['Python', 'TensorFlow', 'Keras', 'NumPy', 'Pandas', 'OpenCV'],
     github: 'https://github.com/Vikram-0401/Crop_disease_detection',
     demo: 'https://krishikavacha.streamlit.app/',
-    color: '#e5e5e5'
+    accent: '#34d399',
   },
   {
     title: 'HiveMind',
-    description: 'Modern blogging platform with clean interface. Serverless architecture for optimal performance.',
+    description: 'Modern blogging platform with a clean reading experience and serverless architecture tuned for smooth publishing.',
     image: '/images/HiveMind.png',
     tech: ['React', 'TypeScript', 'Hono', 'Cloudflare Workers', 'PostgreSQL'],
-    github: 'https://github.com/Vikram-0401',
-    demo: 'https://thinkhivemind.netlify.app/',
-    color: '#d4d4d4'
+    github: 'https://github.com/Vikram-0401/HiveMind',
+    accent: '#f59e0b',
   },
   {
     title: 'PayEase',
-    description: 'Secure money transfer app with simple interface for quick and easy transactions.',
+    description: 'Money transfer app with simple flows, authentication, and a clear transaction experience for everyday payments.',
     image: '/images/EasePay.png',
-    tech: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB'],
-    github: 'https://github.com/Vikram-0401',
-    demo: 'https://easepay.netlify.app/',
-    color: '#a3a3a3'
+    tech: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB'],
+    github: 'https://github.com/Vikram-0401/EasePay',
+    accent: '#fda4af',
   },
   {
     title: 'AI Mock Interviewer',
-    description: 'AI-powered interview prep platform with real-time feedback and adaptive questioning system.',
+    description: 'Interview prep platform with adaptive questions, AI-powered feedback, and a focused practice experience.',
     image: '/images/Mock_interview_ss.png',
-    tech: ['Next.js', 'TypeScript', 'Postgree', 'OpenAI', 'Shadcn UI'],
-    github: 'https://github.com/Vikram-0401/Ai-Mock_Interviewer.git',
-    demo: 'https://github.com/Vikram-0401/Ai-Mock_Interviewer.git',
-    color: '#737373',
-    accentColor: '#525252'
-  }
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'OpenAI', 'Shadcn UI'],
+    github: 'https://github.com/Vikram-0401/AI_Mock_Interviewer',
+    accent: '#c4b5fd',
+  },
+  {
+    title: 'Code Review Assistant',
+    description: 'Developer-focused review helper for catching code quality issues and improving feedback loops.',
+    image: '/images/Code_review_ss.png',
+    tech: ['React', 'AI', 'TypeScript', 'Developer Tools'],
+    github: 'https://github.com/Vikram-0401/Code-RAI',
+    accent: '#67e8f9',
+  },
 ];
 
-const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-
+const Projects = ({ isStandalone = false }: ProjectsProps) => {
   return (
-    <section id="projects" className="py-16 sm:py-20 md:py-24">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-        {/* Section Header */}
+    <section id="projects" className={`section-shell scroll-mt-24 ${isStandalone ? 'pt-32' : ''}`}>
+      <div className="section-inner">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          transition={{ duration: 0.65 }}
+          viewport={{ once: true, margin: '-80px' }}
         >
-          <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white"
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3 }
-            }}
-          >
-            Featured Projects
-          </motion.h2>
-          <motion.div
-            className="w-24 sm:w-32 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full"
-            initial={{ width: 0 }}
-            whileInView={{ width: 128 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg text-slate-400 mt-6 max-w-3xl mx-auto"
-          >
-            Explore my portfolio of innovative projects that showcase my skills in full-stack development, AI/ML, and problem-solving.
-          </motion.p>
+          <div>
+            <span className="section-kicker">
+              <Icon name="Layers" className="h-4 w-4 text-amber-200" />
+              Featured work
+            </span>
+            <h2 className="section-title max-w-4xl">Projects with working depth.</h2>
+            <p className="section-copy">
+              A selection of full-stack and AI/ML builds with real interfaces, deployment targets, and practical product thinking.
+            </p>
+          </div>
+          <Link to="/contact" className="btn btn-secondary w-full md:w-auto">
+            <Icon name="MessageSquare" className="h-4 w-4" />
+            Discuss a build
+          </Link>
         </motion.div>
 
-        {/* Projects - vertical list */}
-        <div className="flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.title}
-              className="group relative w-full max-w-4xl"
-              initial={{ opacity: 0, y: 30 }}
+              className={`interactive-card ${index === 0 ? 'lg:col-span-2' : ''}`}
+              initial={{ opacity: 0, y: 34 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              onHoverStart={() => setHoveredProject(index)}
-              onHoverEnd={() => setHoveredProject(null)}
+              transition={{ delay: index * 0.06, duration: 0.55 }}
+              viewport={{ once: true, margin: '-80px' }}
+              whileHover={{ y: -6 }}
             >
-              {/* Project Card */}
-              <motion.div
-                className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl"
-                whileHover={{ 
-                  y: -8,
-                  scale: 1.02,
-                  borderColor: project.accentColor || project.color,
-                  boxShadow: `0 20px 40px ${project.accentColor || project.color}20`,
-                }}
-                style={{
-                  borderColor: hoveredProject === index ? (project.accentColor || project.color) : undefined,
-                }}
-              >
-                {/* Project Image */}
-                <div className="relative h-40 sm:h-48 overflow-hidden">
-                  <motion.img
+              <div className={`relative grid gap-0 ${index === 0 ? 'lg:grid-cols-[1.1fr_0.9fr]' : ''}`}>
+                <div className={`${index === 0 ? 'h-72 lg:h-full' : 'h-64'} relative overflow-hidden`}>
+                  <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    whileHover={{ scale: 1.1 }}
+                    className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  
-                  {/* Project Title Overlay */}
-                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
-                    <h3 
-                      className="text-lg sm:text-xl font-bold mb-2 transition-colors duration-300"
-                      style={{ 
-                        color: hoveredProject === index ? (project.accentColor || project.color) : '#ffffff' 
-                      }}
-                    >
-                      {project.title}
-                    </h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/[0.86] via-black/[0.24] to-transparent" />
+                  <div className="absolute left-4 top-4 rounded-full border border-white/[0.16] bg-black/60 px-3 py-1 text-xs font-bold text-white backdrop-blur-xl">
+                    0{index + 1}
                   </div>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-4 sm:p-6">
-                  <p className="text-sm sm:text-base text-slate-400 leading-relaxed mb-4 sm:mb-6">
-                    {project.description}
-                  </p>
+                <div className="relative flex min-h-[20rem] flex-col p-5 sm:p-6">
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: project.accent }} />
+                    <span className="text-xs font-bold uppercase text-slate-500">Case study</span>
+                  </div>
+                  <h3 className="text-2xl font-black leading-tight text-white">{project.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-400">{project.description}</p>
 
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <motion.span
-                        key={tech}
-                        className="px-2 sm:px-3 py-1 rounded-full text-xs font-medium border border-white/20 text-slate-300 bg-black/30 transition-all duration-300"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ 
-                          duration: 0.3, 
-                          delay: index * 0.1 + techIndex * 0.05 
-                        }}
-                        whileHover={{
-                          scale: 1.05,
-                          borderColor: project.color,
-                          color: project.color,
-                        }}
-                      >
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs font-bold text-slate-300">
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-white/20 text-slate-300 bg-black/30 transition-all duration-300 hover:border-white/40 hover:text-white text-sm sm:text-base"
-                      whileHover={{ 
-                        scale: 1.05,
-                        borderColor: project.color,
-                        color: project.color,
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Icon name="Github" className="w-4 h-4" />
-                      <span className="text-sm font-medium">Code</span>
-                    </motion.a>
-
+                  <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">
+                      <Icon name="Github" className="h-4 w-4" />
+                      Code
+                    </a>
                     {project.demo && (
-                      <motion.a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-500 text-white font-medium transition-all duration-300 hover:from-gray-600 hover:to-gray-400 text-sm sm:text-base"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Icon name="ExternalLink" className="w-4 h-4" />
-                        <span className="text-sm">Demo</span>
-                      </motion.a>
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
+                        <Icon name="ArrowUpRight" className="h-4 w-4" />
+                        Live demo
+                      </a>
                     )}
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </motion.article>
           ))}
         </div>
 
-        {/* Call to Action */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-12 flex flex-col items-start justify-between gap-5 border-y border-white/10 py-8 md:flex-row md:items-center"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-80px' }}
         >
-          <div className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Interested in collaborating?
-            </h3>
-            <p className="text-slate-300 leading-relaxed mb-6">
-              I'm always excited to work on new projects and explore innovative solutions. 
-              Let's discuss how we can bring your ideas to life.
+          <div>
+            <h3 className="text-2xl font-black text-white">Have a project idea?</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">
+              I am happy to collaborate on clean web apps, AI prototypes, and developer tools with a clear product goal.
             </p>
-            <motion.a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-gray-700 to-gray-500 text-white font-medium transition-all duration-300 hover:from-gray-600 hover:to-gray-400"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Icon name="Mail" className="w-5 h-5" />
-              Get in Touch
-            </motion.a>
           </div>
+          <Link to="/contact" className="btn btn-primary">
+            <Icon name="Send" className="h-4 w-4" />
+            Start a conversation
+          </Link>
         </motion.div>
       </div>
     </section>

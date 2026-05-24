@@ -1,200 +1,124 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import Icon from './ui/Icon';
 
-const About = () => {
-  const [hoveredHobby, setHoveredHobby] = useState<number | null>(null);
+type AboutProps = {
+  isStandalone?: boolean;
+};
 
-  const hobbies = [
-    {
-      icon: <Icon name="Gamepad2" className="w-6 h-6" />,
-      title: "Cricket",
-      description: "Cricket enthusiast who finds joy in both playing and watching the game",
-      color: "#ffffff"
-    },
-    {
-      icon: <Icon name="Compass" className="w-6 h-6" />,
-      title: "Hiking",
-      description: "Avid hiker who loves exploring new trails and connecting with nature",
-      color: "#e5e5e5"
-    },
-    {
-      icon: <Icon name="PenTool" className="w-6 h-6" />,
-      title: "Drawing",
-      description: "Creative soul who expresses through drawing and artistic pursuits",
-      color: "#d4d4d4"
-    },
-    {
-      icon: <Icon name="Gamepad2" className="w-6 h-6" />,
-      title: "Badminton",
-      description: "Badminton player who enjoys competitive matches and staying active",
-      color: "#a3a3a3"
-    }
-  ];
+const highlights = [
+  {
+    icon: 'GraduationCap' as const,
+    label: 'Education',
+    value: 'Computer Science undergraduate at Siddaganga Institute of Technology',
+  },
+  {
+    icon: 'BrainCircuit' as const,
+    label: 'Focus',
+    value: 'AI, machine learning, data structures, and full-stack product development',
+  },
+  {
+    icon: 'Code2' as const,
+    label: 'Build Style',
+    value: 'Practical systems with clean interfaces and strong problem-solving foundations',
+  },
+];
 
+const hobbies = [
+  {
+    title: 'Cricket',
+    image: '/icons/Cricket.jpg',
+    description: 'Competitive energy and team rhythm.',
+  },
+  {
+    title: 'Hiking',
+    image: '/icons/Hiking.jpg',
+    description: 'Fresh trails and long-focus thinking.',
+  },
+  {
+    title: 'Drawing',
+    image: '/icons/Drawing.jpg',
+    description: 'Creative sketching and visual exploration.',
+  },
+  {
+    title: 'Badminton',
+    image: '/icons/Batminton.png',
+    description: 'Fast rallies and sharp reflexes.',
+  },
+];
+
+const About = ({ isStandalone = false }: AboutProps) => {
   return (
-    <section id="about" className="min-h-screen py-24 flex items-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3 }
-            }}
-          >
-            About Me
-          </motion.h2>
+    <section id="about" className={`section-shell scroll-mt-24 ${isStandalone ? 'pt-32' : ''}`}>
+      <div className="section-inner">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.92fr_1.08fr]">
           <motion.div
-            className="w-24 h-1 bg-gradient-to-r from-gray-400 to-white mx-auto rounded-full"
-            initial={{ width: 0 }}
-            whileInView={{ width: 96 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-        </motion.div>
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65 }}
+            viewport={{ once: true, margin: '-80px' }}
+            className="lg:sticky lg:top-28"
+          >
+            <span className="section-kicker">
+              <Icon name="User" className="h-4 w-4 text-emerald-200" />
+              About me
+            </span>
+            <h2 className="section-title">Builder with an AI-first edge.</h2>
+            <p className="section-copy">
+              I am Vikram, a developer who enjoys converting learning into shipped projects. My work sits between full-stack development, AI/ML experimentation, and data-structure driven problem solving.
+            </p>
 
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          {/* Profile Image Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:w-1/3 w-full"
-          >
-            <div className="relative w-80 h-80 mx-auto">
-              <motion.div 
-                className="relative rounded-2xl overflow-hidden h-full border-4 border-white/20 shadow-2xl"
-                whileHover={{
-                  scale: 1.02,
-                  boxShadow: "0 25px 50px rgba(0, 0, 0, 0.3)",
-                  transition: { duration: 0.3 }
-                }}
+            <div className="mt-8 flex max-h-[34rem] items-center justify-center overflow-hidden rounded-lg border border-white/[0.12] bg-black/[0.45] p-3">
+              <img src="/images/My_pic.jpg" alt="Vikram R profile" className="max-h-[32rem] w-full object-contain" />
+            </div>
+          </motion.div>
+
+          <div className="space-y-5">
+            {highlights.map((item, index) => (
+              <motion.article
+                key={item.label}
+                className="interactive-card p-5 sm:p-6"
+                initial={{ opacity: 0, x: 34 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.08, duration: 0.55 }}
+                viewport={{ once: true, margin: '-80px' }}
+                whileHover={{ y: -4 }}
               >
-                <img
-                  src="/images/My_pic.jpg"
-                  alt="Vikram's Profile"
-                  className="object-cover object-top w-full h-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </motion.div>
-              
-              {/* Clean decorative ring */}
-              <motion.div
-                className="absolute -inset-4 rounded-2xl border-2 border-white/30 opacity-50"
-                animate={{
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-            </div>
-          </motion.div>
-
-          {/* Content Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:w-2/3"
-          >
-            <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
-              <div className="space-y-8 text-slate-300">
-                {/* Introduction */}
-                <motion.div 
-                  className="space-y-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <p className="text-lg leading-relaxed">
-                    I'm Vikram, a Computer Science undergraduate at Siddaganga Institute of Technology, specializing in{' '}
-                    <span className="font-semibold text-white">AI and Machine Learning</span>. 
-                    I'm passionate about{' '}
-                    <span className="font-semibold text-gray-300">web development</span>
-                    {' '}and{' '}
-                    <span className="font-semibold text-gray-400">DSA</span>
-                    , focused on building meaningful solutions using modern technologies.
-                  </p>
-                  
-                  <p className="text-lg leading-relaxed">
-                    I enjoy learning by building projects that solve real-world problems. My journey in tech started with competitive programming and has evolved into full-stack development with a strong foundation in data structures and algorithms.
-                  </p>
-                </motion.div>
-
-                {/* Beyond Tech Section */}
-                <motion.div 
-                  className="space-y-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <h3 className="text-2xl font-bold text-white">
-                    Beyond Tech
-                  </h3>
-                  
-                  {/* Hobby Cards */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {hobbies.map((hobby, index) => (
-                      <motion.div
-                        key={index}
-                        className="group relative p-4 rounded-xl border border-white/20 bg-black/30 cursor-pointer transition-all duration-300"
-                        style={{
-                          borderColor: hoveredHobby === index ? hobby.color : undefined,
-                          backgroundColor: hoveredHobby === index ? `${hobby.color}10` : undefined,
-                        }}
-                        whileHover={{ 
-                          y: -4,
-                          scale: 1.02,
-                          boxShadow: `0 10px 25px ${hobby.color}20`,
-                        }}
-                        onHoverStart={() => setHoveredHobby(index)}
-                        onHoverEnd={() => setHoveredHobby(null)}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 + index * 0.1 }}
-                      >
-                        <div className="flex flex-col items-center text-center space-y-3">
-                          <motion.div 
-                            className="p-3 rounded-full bg-black/50 border-2 transition-all duration-300"
-                            style={{ 
-                              borderColor: hobby.color,
-                              color: hobby.color,
-                            }}
-                            whileHover={{ 
-                              scale: 1.1,
-                              rotate: 5,
-                            }}
-                          >
-                            {hobby.icon}
-                          </motion.div>
-                          
-                          <h4 
-                            className="font-semibold text-sm transition-colors duration-300"
-                            style={{ color: hoveredHobby === index ? hobby.color : undefined }}
-                          >
-                            {hobby.title}
-                          </h4>
-                          
-                          <p className="text-xs text-slate-400 leading-relaxed transition-colors duration-300">
-                            {hobby.description}
-                          </p>
-                        </div>
-                      </motion.div>
-                    ))}
+                <div className="relative flex gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-white/[0.12] bg-white/[0.055] text-cyan-100">
+                    <Icon name={item.icon} className="h-5 w-5" />
                   </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+                  <div>
+                    <p className="text-sm font-bold uppercase text-slate-500">{item.label}</p>
+                    <p className="mt-1 text-lg font-semibold leading-7 text-white">{item.value}</p>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+
+            <motion.div
+              className="grid gap-5 pt-2 sm:grid-cols-2"
+              initial={{ opacity: 0, y: 26 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.65 }}
+              viewport={{ once: true, margin: '-80px' }}
+            >
+              {hobbies.map((hobby) => (
+                <article key={hobby.title} className="group overflow-hidden rounded-lg border border-white/[0.12] bg-white/[0.04]">
+                  <div className="flex h-32 items-center justify-center bg-black/45 p-3 sm:h-36">
+                    <img
+                      src={hobby.image}
+                      alt={hobby.title}
+                      className="h-full w-full object-contain grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-lg font-black text-white">{hobby.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{hobby.description}</p>
+                  </div>
+                </article>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
